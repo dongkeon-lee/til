@@ -1,0 +1,16 @@
+cannot find symbol 또는 cannot resolve symbol
+지정된 변수나 메서드를 찾을 수 없다는 뜻으로 선언되지 않은 변수나 메서드를 사용하거나, 변수 또는 메서드의 이름을 잘못 사용한 경우에 발생한다. 자바에서는 대소문자 구분을 하기 때문에 철자 뿐 아니라 대소문자의 일치여부도 꼼꼼하게 확인해야 한다.
+';' expected
+세미콜론';'이 필요한 곳에 없다는 뜻이다. 자바의 모든 문장의 끝에는 ';'을 붙여주어야 하는데 가끔 이를 잊고 실수하기 쉽다.
+Exception in thread "main" java.lang.NosuchMethodError : main
+'main 메서드를 찾을 수 없다.'는 뜻인데 실제로 클래스 내에 main 메서드가 존재하지 않거나 메서드의 선언부 'public static void main(String[] args)'에 오타가 존재하는 경우에 발생한다.
+  이 에러의 해결방법은 main 메서드가 클래스에 정의되어 있는지 확인하고, 정의되어 있다면 main 메서드의 선언부에 오타가 없는지 확인한다. 자바는 대소문자를 구별하므로 대소문자의 일치여부까지 정확히 확인해야 한다.
+  - args 는 매개변수의 이름이므로 args 대신 arg와 같은 다른 이름을 사용할 수 있다.
+Exception in thread 'main' java.lang.NoClassDefFoundError : Help
+'Hello라는 클래스를 찾을 수 없다.'는 뜻이다. 클래스의 'Hello'의 철자, 특히 대소문자를 확인해보고 이상이 없으면 클래스파일(*.class)이 생성되었는지 확인한다.
+  예를 들어 'Hello.java'가 정상적으로 컴파일 되었다면 클래스파일 'Hello.class'가 있어야 한다. 클래스파일이 존재하는데도 동일한 메시지가 반복해서 나타난다면, 클래스패스(classpath)의 설정이 바르게 되었는지 다시 확인해보자.
+illegal start of expression
+직역하면 문장(또는 수식, expression)의 앞부분이 문법에 맞지 않는다는 의미인데, 간단히 말해서 문장에 문법적 오류가 있다는 뜻이다. 괄호'(' 나 '{'를 열고서 닫지 않거나, 수식이나 if문, for문 등에 문법적 오류가 있을 때 또는 public 이나 static 과 같은 키워드를 잘못 사용한 경우에도 발생한다. 에러가 발생한 곳이 문법적으로 옳은지 확인하라.
+class, interface or enum expected
+이 메시지의 의미는 '키워드 class 나 interface 또는 enum가 없다.' 이지만, 보통 괄호 '{' 또는 '}'의 개수가 일치하지 않는 경우에 발생한다. 열린 괄호 '{'와 닫힌 괄호 '}'의 개수가 같은지 확인하자.
+출처: https://java.ihoney.pe.kr/84 [허니몬(Honeymon)의 자바guru:티스토리]
