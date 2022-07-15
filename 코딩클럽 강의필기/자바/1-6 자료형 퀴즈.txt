@@ -1,0 +1,79 @@
+문자변수 s
+정수형변수 10 선언후 출력해보기
+
+
+내가적은거:
+        String c = "s";
+        int num = 10;
+        System.out.println(c);
+>s
+
+
+
+답:
+        char c = 's';
+        int num = 10;
+        System.out.println(c);
+        System.out.println(num);
+>
+s
+10
+
+
+
+
+
+그냥 하나의 코드로 두개 출력못함?
+        System.out.println(c + num);
+>93
+뎃? c 가 아스키코드로 83이라 그래.
+아그럼 어케함?
+
+
+
+
+
+        System.out.println(c + "" + num);
+>s10
+
+뭔가 안이쁜데
+
+
+
+
+
+        System.out.println(c + "\n" + num);
+>s
+10
+
+오 \n 이 무슨뜻인데? => 행 을 만들라는 지시
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10 20 30 이라는 값들이 들어간 배열 변수를 이요하여
+마지막값인 30을 출력해보기
+        int[] numArray = new int[] {10, 20, 30};
+        System.out.println(numArray[numArray.length-1]);
+> 30

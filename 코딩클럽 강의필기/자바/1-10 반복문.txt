@@ -1,0 +1,113 @@
+반복문에는 for 문과 while 문이 있다.
+
+
+        int sum = 0;
+        for ( int i = 0; i < 10; i++) {
+            sum += (i + 1);
+        }
+        System.out.println(sum);
+>55
+
+
+
+
+
+
+
+
+for-each 문 : 배열이나 우리가 뒤에서 배울 collection, 어떤 것의 나열들이 있는 변수가 있을때 그걸로 반복문을 쉽게 짤 수 있는 형태.
+
+        String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        for ( String day : days) {
+            System.out.println(day);
+        }
+
+>
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+Sunday
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+while문
+
+        int i = 0;
+        int sum = 0;
+        while (i < 10) {
+            sum += (i + 1);
+            i++;
+        }
+        System.out.println(sum);
+
+> 55
+
+
+
+
+
+
+
+
+
+
+        int i = 0;
+        int sum = 0;
+        while (i < 10) {
+            if ( i == 4 ) {
+                i++;
+                continue;
+            }
+            sum += (i + 1);
+            i++;
+        }
+        System.out.println(sum);
+
+>50
+이게 뭐임? continue??
+i 가 4에 도달하면 i에 +1 해주고 (5가 되겠네) continue, 그러니까 더이상 이 밑으로 함수를 진행시키지 말고  함수 첫부분부터 다시
+시작해라. 그러니까 i가4가 되면 if문 이 끝나는 곳에 있는    sum += (i + 1); 랑 i++; 는 수행하지않고 whlie 로 다시 돈다는것.
+이렇게 되면 i 가 10전까지 계속 돌다가 5는 스킵해버리는거임. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+do-while문 : 원래 while 문은 조건을 확인하고 수행하는데, 수행을 먼저하고 조건을 확인하는게 이거임.
+
+        int i = 0;
+        int sum = 0;
+
+        do {
+            sum += (i + 1);
+            i++;
+        } while (i < 10);
+        System.out.println(sum);
+>55
+
+뭐 사실 while (i < 10) 하고 { } 이거 안쓰고 바로 ; 쓰는거 외에는 작동원리는 똑같음.

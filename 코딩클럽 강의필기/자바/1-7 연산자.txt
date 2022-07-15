@@ -1,0 +1,47 @@
+수식을 도와주는 기호들.
+
+기본적으로는 똑같다.
+새롭게 참거짓의 and와 or 을 배워보자
+
+or 은 파이브기호인 || 을 썼지?
+and는 && 두개를 쓴다.
+
+
+
+참거짓 함수인 boolean을 써보면
+        boolean a = true;
+        boolean b = false;
+
+        System.out.println(a && b);
+>false
+왜냐하면 하나는 트루고 하나는 폴스라 같지않음.
+
+
+
+        System.out.println(a && true);
+이렇게 해야 true가 출력되겠지.
+
+
+
+
+
+
+
+
+
+
+
+
+
+        System.out.println(!b);
+이건 뭐임? b가 false 인데 ! 때문에 반대조건이니까 출력하면
+>true
+
+
+
+
+
+
+
+
+

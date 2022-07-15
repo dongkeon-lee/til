@@ -1,0 +1,222 @@
+리스트(llist) : 순서가 중요하게 값을 담는 것.
+0번째는사과 1번째는 배 2번째는 수박 이런식으로 값을 담아둠
+
+
+딕셔너리(dictionary) : key와 value를   key : value 이런식으로 값을 담음
+주민등록번호는 ***          주민등록번호 : ***
+이름은 ooo                   이름 : ooo
+전화번호는 xxx-xxx-xxxx     전화번호 : xxx-xxx-xxxx
+
+
+
+
+
+리스트------------------------------------------------------------------------
+[ ] 이 값 안에 쓴다.
+
+
+
+
+
+
+a_list = ['사과','배','감']
+print(a_list)
+->['사과', '배', '감']
+
+
+
+리스트에 문자,숫자,참/거짓 도 담을 수 있다.
+
+
+
+a_list = [2,'배',False]
+print(a_list)
+->[2, '배', False]
+
+
+
+리스트에 리스트도 담을 수 있음
+a_list = [2,'배',False,['사과','감']]
+print(a_list)
+->[2, '배', False, ['사과', '감']]
+
+
+
+
+
+리스트에 담긴 리스트를 불러오는 방법?
+print(a_list[3][1]) -> a_list 의 4번째값 중에 2번째값 : '감' 출력됨
+
+
+
+
+
+
+
+
+이미 있는 리스트에 새로운거 추가하는법
+a_list = [1,5,6,3,2]
+a_list.append(8)
+print(a_list)
+->[1, 5, 6, 3, 2, 8]
+
+
+
+
+
+
+
+마이너스번째는 머임? 뒤로가면됨
+a_list = [1,5,6,3,2]
+result = a_list[-2]
+print(result)
+-> 3
+
+
+
+
+
+
+
+
+길이구하기
+a_list = [1,5,6,3,2]
+result = len(a_list)
+print(result)
+-> 5
+
+
+
+
+
+
+
+오르차순으로 정렬
+a_list = [1,5,6,3,2]
+a_list.sort()
+print(a_list)
+-> [1, 2, 3, 5, 6]
+
+
+
+
+
+
+
+
+내림차순으로 정렬
+a_list = [1,5,6,3,2]
+a_list.sort(reverse = True)
+print(a_list)
+-> [6, 5, 3, 2, 1]
+
+
+
+
+
+
+
+
+
+
+내가 원하는 값이 리스트에 있는지 없는지 판별하는기능
+a_list = [1,5,6,3,2]
+result = (5 in a_list)
+print(result)
+-> True
+
+
+
+
+
+
+딕셔너리-------------------------------------------------------------
+{ } 이 값안에 'a' : 'b' 이런식으로 쓴다.
+
+
+
+
+
+
+
+
+a_dict = {'name' : 'bob', 'age' : 27}
+print(a_dict['name'])
+-> bob
+
+
+
+
+
+
+
+딕셔너리에 추가하기
+a_dict = {'name' : 'bob', 'age' : 27, 'friend' : ['영희','철수']}
+
+a_dict['height'] = 180
+
+print(a_dict)
+-> {'name': 'bob', 'age': 27, 'friend': ['영희', '철수'], 'height': 180}
+
+
+
+
+
+
+
+
+
+
+특정값 있는지 없는지
+a_dict = {'name' : 'bob', 'age' : 27, 'friend' : ['영희','철수']}
+
+a_dict['height'] = 180
+
+result = ('height' in a_dict)
+
+print(result)
+-> True
+
+근데     180 in a_dict       하니까 False 나오더라 왜지?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+리스트와 딕셔너리의 조합1
+a_dict = {'name' : 'bob', 'age' : 27, 'friend' : ['영희','철수']}
+print(a_dict['friend'][1])
+-> 철수
+
+
+
+
+
+
+
+리스트와 딕셔너리의 조합2
+
+people = [
+    {'name': 'bob', 'age': 27},
+    {'name': 'john', 'age': 30}
+]
+
+이때 내가 30 이라는 값을 얻고 싶으면?
+print(people[1]['age'])
+-> 30
+
+
+
+

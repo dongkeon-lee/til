@@ -1,0 +1,118 @@
+★5-1
+filezilla : 클라우드 환경에 뭔가를 올림. 파일을 보낼 수 있는 프로그램임.
+gabia : 
+
+
+★5-6
+"" 이게있어야 문자, 아니면 숫자
+클라이언트는 숫자로 줘도 서버는 문자로 받음
+-> num_receive = request.form['num_give']
+넘기브는 숫자고 넘리시브는 문자임
+
+넘시리브 문자를 숫자로 바꾸려면
+ int(num_receive) 하면됨.
+
+
+
+★5-7
+AWS에서 컴퓨터를 빌려서 그 빌린 컴퓨터안에 우리 서버를 등록해서 사용하자.
+이 컴퓨터는 리눅스 os를 쓰고있다.
+
+★5-8
+인스턴스 중지 : 컴퓨터 끄기
+인스턴스 종료 : 컴퓨터 반납. 새로 하나 다시 만들고싶을때 이거 쓰자
+
+리눅스 명령어
+mkdir 폴더만들기
+ls 만든 폴더보이기
+cd 폴더 들어가기
+cd .. 뒤로가기
+
+
+52.78.228.244
+
+★5-9
+EC2 한방에 세팅하기:
+
+
+# python3 -> python : 파이썬을 설치
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10
+
+# pip3 -> pip : 패키지설치
+sudo apt-get update
+sudo apt-get install -y python3-pip
+sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+
+# port forwarding
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 5000
+
+
+
+파일질라 왼쪽이 내컴퓨터 오른쪽이 내가 산 컴퓨터
+
+인바운드
+-> 방화벽을 해제해서 포트로 접속할 수 있도록 해주는것.
+
+
+
+
+
+★5-11
+깃배쉬 킬때마다 다 치지말고 화살표 위키 누르면 ssh -i ~~ 이거 알아서 쳐짐
+ssh -i /c/Users/Dongkeon/Desktop/doker_mykey.pem ubuntu@52.78.228.244
+
+
+
+ctrl + c  : 프로세스 종료
+계속돌리는방법 : nohup python app.py &
+계속돌린걸 종료하는방법
+->
+ps -ef | grep 'python app.py' | awk '{print $2}' | xargs kill
+
+-정리-
+파이참에서 작업을하면
+작업한것들을 파일질라에 static templates app.py 업로드하여 서버에서 배포하는것
+파일질라에올리고 깃배쉬에 nohup python app.py & 으로 서버를 상시켜주면됨.
+만약 수정할것이있으면 우선 서버를 종료해야됨
+ps -ef | grep 'python app.py' | awk '{print $2}' | xargs kill
+해주고 작업한담에 파일질라에 수정한거 다시올리고 깃배쉬 다시 실행해서 서버다시 틀어주고,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

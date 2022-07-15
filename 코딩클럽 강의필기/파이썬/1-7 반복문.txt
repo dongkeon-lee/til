@@ -1,0 +1,141 @@
+리스트에 [1, 2, 3, 4, 5, 6, 7, 8, 9]
+이거 프린트 어케함? 하나하나 print(a_list[0]) 이렇게 다 쓸거임?
+이럴때 반복문을 쓰면됨.
+
+
+fruits = ['사과','배','감','수박','딸기']
+
+for fruit in fruits :
+    print(fruit)
+
+->	사과
+	배
+	감
+	수박
+	딸기
+
+
+파이썬에서 반복문이란, 리스트 안에 있는 요소 하나하나를 꺼내서 하나씩만 사용한다는거임.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+각각의 리스트에 번호를 매겨줄 수도 있음.
+
+
+for i, person in enumerate(people) :
+    name = person['name']
+    age = person['age']
+    print(i,name,age)
+    if i > 3 :
+        break
+
+
+
+-> 
+0 bob 20
+1 carry 38
+2 john 7
+3 smith 17
+4 ben 27
+
+
+
+
+
+
+
+
+
+
+
+
+people = [
+    {'name': 'bob', 'age': 20},
+    {'name': 'carry', 'age': 38},
+    {'name': 'john', 'age': 7},
+    {'name': 'smith', 'age': 17},
+    {'name': 'ben', 'age': 27},
+    {'name': 'bobby', 'age': 57},
+    {'name': 'red', 'age': 32},
+    {'name': 'queen', 'age': 25}
+]
+
+for person in people :
+    name = person['name']
+    age = person['age']
+    if age > 20 :
+        print(name,age)
+
+->
+carry 38
+ben 27
+bobby 57
+red 32
+queen 25
+
+
+
+
+
+
+
+
+
+
+
+그렇게 하나 하나 뽑은값에다가 번호를 매길 수 있음.
+
+for person in people  이 부분을
+for i, person in enumerate(people) 이렇게 바꿔주면됨.
+조건문 지우고 돌려보면
+
+
+people = [
+    {'name': 'bob', 'age': 20},
+    {'name': 'carry', 'age': 38},
+    {'name': 'john', 'age': 7},
+    {'name': 'smith', 'age': 17},
+    {'name': 'ben', 'age': 27},
+    {'name': 'bobby', 'age': 57},
+    {'name': 'red', 'age': 32},
+    {'name': 'queen', 'age': 25}
+]
+
+for i, person in enumerate(people) :
+    name = person['name']
+    age = person['age']
+    print(i,name,age)
+
+
+->
+0 bob 20
+1 carry 38
+2 john 7
+3 smith 17
+4 ben 27
+5 bobby 57
+6 red 32
+7 queen 25
+
+
+
+
+
+그리고 여기서 조건문을 추가해서
+    print(i,name,age)
+    if i > 3 :
+        break
+
+이러면 i 가 4 인곳까지만 출력하고 멈춤
+이런건 어따쓰냐? 리스트가 

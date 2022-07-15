@@ -1,0 +1,332 @@
+★1-1
+1. 브라우저는 네이버한테 요청하는것과 받은것을 보여주는 역할을 한다.
+2. 새로고침=네이버한테 새로 요청하는것
+3. 받아와서 브라우저에 띄운것은 내것이다. 내가 변경할 수 있다. 
+4. HTML 은 뼈대다. 네이버 로고는 여기있고 그옆에 검색바가 있고 그옆에 검색상자가있고 오른쪽에는 로그인 창이 있고 등등.
+5. CSS는 꾸미는것이다. 네이버 검색바는 연두색테투리로 직사각형이다. 사전 뉴스 증권 부동산 지도 글시는 굵은 글씨다. 폰트사이즈는 20이고~~~~
+6. 자바스크립트는 움직이는거다. 이걸 누르면 로그인창이 뜬다. 이걸누르면 검색화면이 뜬다. 이것은 랭킹처럼 글씨가 위로 움직이는 광고창이다.
+
+
+★1-3
+Frontend - 우리가 눈에 보이는 HTML, CSS, JavaScript 이런 부분들을 지칭하는 명칭
+                                            ㄴ 이러한걸 주는 애가 '서버' : 서버는 Frontend를 준다.
+
+html에서 head는 브라우저 안에 안들어가는 애들. body는 브라우저 안에 들어가는애들. 참고로 브라우저 탭 
+옆에 있는 아이콘을 파비콘이라함.
+
+html태그.
+div : division 의 약자로, 구역을 나눈다는것. 한줄이 띄워지고 나타나짐.
+p : Paragraph 의 약자로, 문단을 나타냄. 한줄이 띄워지고 나타나짐.
+hl : 문서의 제목같은 역할. 페이지마다 h1을 하나씩 넣어주는게 좋다. 그래야 구글검색이 잘됨.
+span : 특정 '글자'를 꾸미기 위해서 그 글자를 잡아주는 역할.
+a : 하이퍼링크 태그.
+img : 이미지 태그.
+
+Ctrl + Alt + L : 줄맞추기 퀵버튼 (Mac OS는 : command + option + L)
+Tab : 그 뭔가 띄어줘서 이쁘게 해주던데 (탭 누르면 계속 오른쪽으로 띄움. Shift + Tab 하면 왼쪽으로 다시옴)
+
+
+★1-5
+css(cascating style system)는 꾸미기다. 꾸미려면 무조건 '지칭' 하는게 먼저 선행해야 한다. '짱구의 바지' 를 꾸민다.
+class="mytitle" 이것은 '짱구의 바지' 이렇게 이름을 붙여주는거임.
+style .mytitle 이것은 '짱구의 바지 를'
+
+margin: 20px 바깥쪽 여백. 이렇게 하나만 쓰면 4방향 모두 20px씩 여백을 두라는것임.
+margin: 20px 30px 40px 50px   시계방향으로 위 오른쪽 아래 왼쪽 여백을 뜻함.
+
+padding: 20px 안쪽여백.
+
+margin: auto; 상하좌우 전부 최대한 미세요 = 가운데로 오게됨.
+
+부트스트랩 : 남들이 만들어놓은 예쁜 css꾸러미.
+
+
+            background-image: url(https://~~~);
+            background-position: center;
+            background-size: cover;
+
+이거 3개는 늘 붙어다닌다.
+
+
+
+★1-7
+' * ' 은 모든 태그에 먹이겠다는 뜻
+(https://fonts.google.com/?subset=korean) 폰트사이트
+
+주석처리 : ctrl + /
+
+<link rel="stylesheet" type="text/css" href = "css파일이름.css">         : css를 새 시트에 붙여넣고 불러오는 방법
+
+
+
+
+
+
+★1-9
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+이거 4개는 늘 붙어다닌다. -> 박스 안에 있는것들 가운데로 정렬하는방법
+
+
+.mytitle > button {}                '마이타이틀 안에 있는 버튼은'
+
+border-radius: 50px;       상자 테두리를 뭉특하게
+
+border: 1px solid white;       상자 테두리가 1픽셀에  실선이고 흰색이다.
+
+
+
+
+
+
+
+
+ .mytitle > button:hover {
+            border: 2px solid white;
+        }
+
+마이타이틀의 버튼이 hover 되었을때(마우스가 올려졌을때) 테투리가 2픽셀로 굵어진다.
+
+
+
+
+★1-10
+(https://kr.piliapp.com/facebook-symbols/) 이모티콘사이트
+
+
+
+
+★1-11
+모바일처리 :  width 앞에 max 붙여서 max-width: 500px; 이렇게 해두면 최대로 커져도 500이 고정이란뜻
+그 밑에 그냥 width: 95%; 이렇게 더 써주면 맥스값보다 95%까지만 작아질 수 있다는것. 창을 아무리 줄여도 
+500픽셀의 95퍼센트까지만 줄여지고 그 이후론 안줄여짐.
+
+
+
+
+
+★1-12
+자바스크립트란? 프로그래밍 언어중 하나로, 브라우저가 알아들을 수 있는 언어이다.
+모든 브라우저는 약속을 했음. 자바스크립트만쓰자. 약속안했으면 크롬파이썬 크롬자바스크립트 크롬자바 등등등 다 해야됨.
+
+자바와 자바스크립트는 무슨관련?  아무 관련없다.
+
+onclick="~~~"  클릭을하면 ~~~ 을 호출해라
+
+script는 브라우저에서 오른쪽클릭 후 검사 눌렀을때 뜨는 창에서 console 을 누르면 나오는 창이랑 똑같은거다.
+(참고로 clear console 누르면 적은거 지울 수 있음)
+
+스크립트 문법은 5가지만 알자.
+변수 자료형 함수 조건문 반복문.
+
+변수: 값을 담는것
+자료형: 이게 숫자냐, 문자냐 이런거
+함수: 우리가 방금했던 hey() 같은 애들이 함수
+조건문: if() 이렇다면 저렇고~ else() 그게 아니라면 이렇게 된다.
+반복문: 계속 반복하자
+
+
+
+
+★1-13
+●변수와 자료형 부터보자
+
+----------------- 
+let a = 2
+(a를 2라고 보자)
+
+그렇다면 a 를 치면?
+2가 출력되겠지.
+
+
+
+
+let a_list = ['수박','참외','배']
+이렇게 하면 리스트를 작성할 수 있음.
+수박부터 차례대로 0,1,2 이런순서.
+
+a_list[1] 을 치면? '참외'가 출력될것.
+
+
+
+
+a_list.push('감')
+이라고 치면 4가 출력된다.
+그뒤로 
+a_list 를 다시 쳐주면
+(4) ['수박', '참외', '배', '감']
+라고 출력된다.
+------------------
+
+이번엔 숫자가 아닌 key value, 그러니까 문자일경우임.
+
+let a_dict = {'name':'bob','age':27}
+그러면
+a_dict['name'] 을 검색하면?
+'bob' 이 출력됨.
+
+
+a_dict['height'] = 180
+자료형-문자의 리스트 추가방법임.
+180이 출력될것임.
+이상태로
+
+a_dict를 검색하면
+{name: 'bob', age: 27, height: 180}
+라고 나옴.
+
+
+
+
+
+let myemail = 'sparta@gmail.com'
+
+myemail.split('@')
+(2) ['sparta', 'gmail.com']                        @를 기점으로 나누겠다. 나누고보니 list 잖아?
+
+myemail.split('@')[1]              0번째는 스파르타고 1번째는 쥐메일쩜컴
+'gmail.com'
+
+myemail.split('@')[1].split('.')          쥐메일쩜컴을 또 쩜을 기점으로 나누겠다.
+(2) ['gmail', 'com']
+
+myemail.split('@')[1].split('.')[0]           쥐메일과 컴은 각각 0 1 을 할당.
+'gmail'
+
+
+
+
+
+
+
+★1-14
+function sum(a,b){
+            alert(a+b)
+        }
+
+sum(a,b) 라고 치면 (a+b)를 alert(호출) 해라. ----> a가1이고 b가2면 3이 호출됨.
+
+
+alert 대신에 console.log 라고 쳐주면 알림창이 더이상 안뜨고 콘솔창에 적어짐.
+
+
+
+
+
+
+
+
+조건문
+function is_adult(age){
+            if (age > 20) {
+                alert('성인입니다')
+            }else {
+                alert('청소년입니다')
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+반복문
+let a_list = ['사과','배','감','딸기']
+      for (let i = 0; i < a_list.length; i++) {
+          console.log(a_list[i])
+      }
+
+
+
+
+
+
+let i = 0;          i 는 0이다.
+i < a_list.length;     i가 a_list 의 length(길이, 그러니까 4) 미만 까지     (0,1,2,3) 으로 길이는 4다. 결론은 i는 4미만인 3까지
+ i++                   i가 하나씩 증가한다.
+
+
+
+
+
+
+
+
+let scores = [
+            {'name': '철수', 'score': 90},
+            {'name': '영희', 'score': 85},
+            {'name': '민수', 'score': 70},
+            {'name': '형준', 'score': 50},
+            {'name': '기남', 'score': 68},
+            {'name': '동희', 'score': 30},
+        ]
+
+      for (let i = 0; i < scores.length; i++) {
+          console.log(scores[i])
+      }
+
+이렇게 하고 콘솔창가보면
+
+{name: '철수', score: 90}
+{name: '영희', score: 85}
+{name: '민수', score: 70}
+{name: '형준', score: 50}
+{name: '기남', score: 68}
+{name: '동희', score: 30}
+라고 찍힘. 
+근데 스코어만 보고싶다. 그러면?
+
+ console.log(scores[i]) 에다가 추가로  console.log(scores[i]['score']) 적어주면됨.
+
+
+90
+85
+70
+50
+68
+30
+
+
+
+
+
+이때 70점 넘는 애들의 이름만 출력하려면? 조건문을 활용
+
+ for (let i = 0; i < scores.length; i++) {
+          if (scores[i]['score'] > 70) {
+              console.log(scores[i]['name'])
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+★1-15
+
+
+
+
+
+
+

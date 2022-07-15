@@ -1,0 +1,141 @@
+참조자료형 : 기본자료형이 아닌 모든것. java 언어에서의 특징이다.
+java의 인스턴스(객체)를 가리킬수있는것.
+
+
+클래스를 이용한 참조자료형
+String sparta = "Hello Sparta!"; 여기에서 맨앞에 String 부분이 클래스
+컨트롤키를 누른채로 String에 커서를 올리면 손가락 모양으로 바뀌면서 누르면 뭐가 열리는데 설명에 class string 이런식으로 써있음.
+class가 앞에 찍혀있는 애들이 바로 클래스를 이용한 참조자료형임
+
+
+
+
+
+
+
+
+
+이걸 한번보자
+int[ ] intArray = new int[ ] {1, 2, 3, 4, 5};
+
+처음에 int[ ] 은 int를 여러개를 담을 수 있게 해준다는 뜻의 int배열이라고 한다.
+int[ ]는 int가 기본자료형인것과 달리 참조자료형이다.
+
+뒷부분을 보자면
+new int[ ] {1, 2, 3, 4, 5};
+인트 배열을 새로운걸 하나 만드는데 그 배열이  {1, 2, 3, 4, 5} 이러하다.
+그러니 변수를 출력해보면
+System.out.println(intArray);
+> [I@19619aa
+
+머임???
+이거 강의에서는 왠지 모르겠는데 변수부분 intArray에 알트+앤터 누르면 뭐 노란전구 목록나오는데 앤터 한번더 눌러주면
+변수가 Arrays.toString(intArray) 이걸로 바뀌면서 출력값이 잘나옴
+> [1, 2, 3, 4, 5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+배열이란 동일한 자료형, 위에서는 int 가 되겠지. 아무튼 자료형의 데이터를 연속된 공간에 저장하기 위한 자료 구조이다.
+이게 왜 필요할까?
+예를들어 10명의 학생의 점수를 입력한다고 했을때 배열이 없다면 변수를 10개를 선언해야한다.
+int배열이 있다면 int[ ] 에 다가 scores 해서 집어넣어주면 된다. 하나의 변수 안에 숫자의 연속을 담게 되는것.
+
+'몇번째' 를 의미하는 단어가 index 이다. 이제부터 인덱스 x번 하면 x번째 라는 소리. 근데 컴퓨터의 인덱스는 0번부터 시작임
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+배열 예제를 보자
+int[] intEmptyArray = new int[5];
+
+intEmptyArray 라는 변수에 아직 아무런 값도 할당 되지 않은 5개짜리 리스트를 선언.
+System.out.println(intEmptyArray); 으로 출력해보면(알트앤터 앤터 해야겠지? 그럼 Arrays.toString(intEmptyArray) 이렇겠지?)
+>[0, 0, 0, 0, 0]
+난 0 이라는 값을 넣어준적이 없는데 뭐지
+선언만 하고 초기화(그러니까 값을 지정하는거)해주지 않으면 해당하는 타입의 초기화 되는 값을 디폴트( 이경우엔 0)로 가지게된다.
+
+하지만 값을 넣어준다면?
+        int[] intArray = new int[] {1, 2, 3, 4, 5};
+        System.out.println(Arrays.toString(intArray));
+>[1, 2, 3, 4, 5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+스트링도 해보자
+        String[] stringEmptyArray = new String[5];
+        System.out.println(Arrays.toString(stringEmptyArray));
+> [null, null, null, null, null]
+난 값에 null 이라는 글자를 넣어준 적이 없는데 머지
+마찬가지로
+선언만 하고 초기화(그러니까 값을 지정하는거)해주지 않으면 해당하는 타입의 초기화 되는 값을 디폴트( 이경우엔 null)로 가지게된다.
+int랑 달리 string은 기본자료형이 아니라 참조자료형이다. 참조자료형은 디폴트값이 없다(null).
+
+
+
+
+(이부분에서 출력시 한글깨짐 고쳤음...
+https://beemiel.tistory.com/4 이걸로안되서
+https://dorudoru.tistory.com/2156 여기 댓글에 17버전 낮추라해서 낮춰서 해결)
+
+
+
+
+암튼 
+        String[] season = {"봄", "여름", "가을", "겨울"};
+        System.out.println(Arrays.toString(season));
+> [봄, 여름, 가을, 겨울]
+
+
+
+
+여기서 season 변수의 길이를 구하려면?
+System.out.println(season.length);
+> 4
+
+
+
+여기서 맨 마지막 것(겨울)만을 구하려면?
+System.out.println(season[season.length]);
+시즌에 시즌길이만큼번째에 있는것을 구하겠다는거니까 출력하면
+> 에러
+뎃?
+시즌 길이 만큼번째라면 4번째인데요? 컴퓨터는 0부터 센다고했잖아. 해당 리스트는 0부터 세어서 3번재까지 밖에 없잖아.
+그러므로 하나를 빼줘야지
+System.out.println(season[season.length-1]);
+> 겨울
+
+
+
+
+

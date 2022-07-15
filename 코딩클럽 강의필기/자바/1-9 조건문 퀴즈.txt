@@ -1,0 +1,47 @@
+이것을 복사해서 자바 에 붙여넣어보자
+
+public class Main {
+ public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int score = sc.nextInt();
+ }
+}
+
+그럼 필시 스캐너에 빨간줄이 그어진다. 알트 앤터로 어떤 해결방법을 제시하는지 보라.
+클래스 가져오기를 하면 맨위에 import java.util.Scanner; 이 써진다.
+
+
+여기에서
+Scanner sc = new Scanner(System.in);
+맨 뒷부분에 in 은 System의 input을 받겠다는 뜻.
+
+
+또 다른부분에서
+int score = sc.nextInt();
+맨 뒷부분에 nextint() 는 sc 다음에 나오는 인풋을 실행할꺼야.그래서 이게 뭔뜻임? 아래에 설명하겠음.
+일단 코드를
+
+
+
+
+
+
+if (score <= 100 && score > 90 ) {
+            System.out.println("A 등급 입니다.");
+        } else if (score <= 90 && score > 80) {
+            System.out.println("B 등급 입니다.");
+        } else if (score <= 80 && score > 70 ) {
+            System.out.println("C 등급 입니다.");
+        } else {
+            System.out.println("F 등급 입니다.");
+        }
+
+
+이렇게 짰다.
+이걸 실행시켜보면 아무것도 안뜬다.
+아까 System.in 있잖아. 그게 시스템창,그러니까 콘솔창에 input을 하겠다는 뜻이라 이제 콘솔창에 내가 뭔가를 입력할 수 있게
+커서가 깜빡깜빡함.
+이제 뭐 아무 점수나 써보자. 93 을 쓰고 아까 위에서 본 sc.nextInt(); 있잖아. sc는 커서를 콘솔창에 넣을 수 있게 해주는거고 
+거기서 () 안에 뭔가를 넣고 nextint 까지 해주면 그걸 score로 받아서 if 문을 돌릴거임. 
+() 안에 쓴게 93인거고 nextint라는것이 엔터키임. 그러니까 sc.nextInt(); 은 93 다음에 나오는것(엔터키)을 실행할꺼란 소리.
+그럼 출력이  A등급 입니다 뜨겠지.

@@ -1,0 +1,505 @@
+★3-2
+반복해서 문자열을 나오게하는 방법
+let star_image = '⭐',repeat(star)
+ 여기서 star는 이전에 정의한 별점의 수 임.(let star = rows[i]['star'])
+
+
+★3-3
+venv 폴더는 안보이는애 취급해서 아무것도 안에다 뭐 만들지말자
+
+★3-4
+자바스크립트랑 달리, 파이썬은 변수 정의할때 let 이런거 안쓰고 그냥 쓰면됨.
+a = 3 (o)
+let a = 3 (x)
+
+
+그리고 print(a+b) 이렇게 프린트가 보여주는거임.
+
+자바스크립트는 리스트에 추가할때 
+a_list.push('수박') 이렇게 수박을 추가했다면,
+파이썬은 push가 아니라 append임.
+a_list.append('수박') 이렇게 하고 print(a_list) 하면 사과,배,감,수박 이 출력됨.
+
+딕셔너리도 똑같음
+a_dict = {
+    'name':'bob',
+    'age':27
+}
+
+print(a_dict['name']) 하면 bob 이 출력됨
+
+
+
+
+함수를 하는법. 줄을 잘 맞춰주자.
+def sum(a,b):
+     return a+b
+
+result = sum(1,2)
+print(result)
+
+
+-----------> sum(a,b) 라는것은 return a+b 그러니까 a랑b를 더하는값을 호출하는 명령을 정의한것.
+그러니까 sum(1,2)의 결과(result)는  프린트해보면 3이 나올(return)것이다. 
+결국 result = sum(1,2) 에서 result 를 sum(1,2) 로 변신시키라는 뜻. 그럼 프린트 리설트하면 sum(1,2)가 출력되겠네?
+근데 sum(1,2)가 뭐야-> 1+2를 return 하는거잖아. 그럼 3이 출력되겠지.
+
+
+
+
+
+
+함수에서 ':' 이것이 나오면 '그 다음부터는 나의 내용물입니다' 라는 뜻임.
+예를들면
+def is_adult(age):
+    if age > 20:
+        print('성인입니다')
+    else:
+        print('청소년입니다') 
+
+->>def is_adult(age): 여기서 : 다음에 나오는 아랫줄은 이것의 내용물 이라는뜻
+->>if age > 20:
+        print('성인입니다') 여기서 : 다음에 나오는 프린트머시기는 이것의 내용물이라는뜻
+
+내용물은 탭을 하나 함으로써 내용물이라는것을 표현.
+파이썬에서는 탭(들여쓰기)가 중요하다.
+
+
+
+
+
+
+반복문 하는법.
+
+fruits = ['사과','배','배','감','수박','귤','딸기','사과','배','수박']
+
+for aaa in fruits:
+     print(aaa)
+
+
+
+
+
+
+
+----------
+people = [{'name': 'bob', 'age': 20},
+{'name': 'carry', 'age': 38},
+{'name': 'john', 'age': 7},
+{'name': 'smith', 'age': 17},
+{'name': 'ben', 'age': 27}]
+
+for ppp in people:
+    if ppp['age'] > 20:
+        print(ppp['name'])
+
+
+
+출력결과물은
+carry
+ben 
+
+
+----------
+
+
+
+
+
+
+★3-5
+크롤링을 하려면 남들이 만들어 놓은 라이브러리를 사용해야된다.
+이것을 파이썬에서는 패키지 라고 부른다.
+
+
+
+
+가상 환경(virtual environment) 이란?  - 프로젝트별로 패키지들을 담을 공구함
+📌 **문제상황:**
+회사에서는 패키지 A, B, C를 설치해서 쓰고,
+개인 프로젝트에서는 패키지 B, C, D, E를 설치해서 쓰고 있었어요.
+
+그런데 회사팀장님이 B를 이전 버전인 `B'` 로 쓰자고 하시네요.
+그렇게 되면, 같은 컴퓨터에 깔려 있는 개인 프로젝트에서는 `B'`로 쓰면 코드를 다 바꿔야 해요 😭
+
+어떻게 하면 좋을까요?
+
+
+
+
+💡 **해결책:**
+다 담아둘 필요 없이 공구함을 2개 만들어서,
+
+공구함1에 A, B', C를 담아두고,
+공구함2에 B, C, D, E를 담아두고 쓰면 관리하기 편하겠죠?
+
+그래서, 가상환경이라는 개념이 등장했습니다.
+즉, **프로젝트별 공구함** 이에요.
+
+
+
+
+👉 정리하자면, 
+
+**가상환경(virtual environment)**은
+같은 시스템에서 실행되는 다른 파이썬 응용 프로그램들의 동작에 영향을 주지 않기 위해, 파이썬 배포 패키지들을 설치하거나 업그레이드하는 것을 가능하게 하는 **격리된 실행 환경** 입니다.
+
+
+
+
+그 가상환경(공구함)이 바로 venv 폴더임. 라이브러리들이 패키지가 담기는 것이기 때문에 우리가 만지는게 아님.
+
+
+
+★3-6
+
+import requests
+리퀘스츠 라는 라이브러리 패키지를 쓸꺼야. 라는뜻
+
+
+r = requests.get('http://spartacodingclub.shop/sparta_api/seoulair')
+rjson = r.json()
+리퀘스츠 라이브러리는 이렇게써. 쓰는방법은 라이브러리들마다 정의하는 방식이 다 다르다.
+만든사람 마음임. 
+
+
+
+import requests # requests 라이브러리 설치 필요
+
+r = requests.get('http://spartacodingclub.shop/sparta_api/seoulair')
+rjson = r.json()
+
+rows = rjson['RealtimeCityAir']['row']
+
+for row in rows:
+    gu_name = row['MSRSTE_NM']
+    gu_mise = row['IDEX_MVL']
+    if gu_mise < 60:
+
+        print(gu_name)
+
+
+이러면 결과가
+중구
+종로구
+용산구
+은평구
+서대문구
+마포구
+광진구
+성동구
+중랑구
+동대문구
+성북구
+도봉구
+강북구
+노원구
+강서구
+구로구
+영등포구
+동작구
+관악구
+금천구
+양천구
+강남구
+서초구
+송파구
+강동구
+
+종료 코드 0(으)로 완료된 프로세스
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+★3-7
+크롤링을 하려면 두가지를 해야함
+1.요청해서 html을 가져오는것. 값을 가져오는것 이것은 리퀘스츠 라이브러리 패키지로 가능했다.
+2.html 에서 내가 원하는 무언가(영화제목)를 쉽게 찾게 해주는 beautifulsoup 라는 라이브러리 패키지가 필요함(bs4)
+
+
+
+headers 가 뭐임? : 우리가 코드에서 콜을 날리잖아. 근데 마치 브라우저에서 콜을 날린것처럼
+사람인것처럼 쓰는것.
+
+
+자바스크립트에서 a == b 이러면 a는 b와 같다 라는뜻이지
+파이썬도 똑같은데 대신 반대로 a는 b와 같지 않다 는 어떻게 쓰지?
+a != b
+또는
+a is not b
+
+------이거는 파이썬문법아님. 뷰티풀수프 사용법임-----------------------------------
+네이버영화 html에서 영화이름중에 밥정 이라는 영화에 검사눌러서 copy selctor 해오기
+#old_content > table > tbody > tr:nth-child(2) > td.title > div > a
+
+타이핑해보자
+title = soup.select_one('') 여기 따옴표안에다가 위에서 복사한거 붙여넣기.
+title = soup.select_one('#old_content > table > tbody > tr:nth-child(2) > td.title > div > a')
+
+그리고 타이핑
+print(title)하면
+<a href="/movie/bi/mi/basic.naver?code=186114" title="밥정">밥정</a> 출력됨.
+
+print(title.text)하면
+밥정   출력됨.
+
+print(title['href'])하면
+/movie/bi/mi/basic.naver?code=186114 출력됨.
+
+
+
+
+
+
+
+select_one 은 하나잖아. 여러개 하는법
+
+
+
+
+
+
+
+
+~이 아닐때 : != ~ 이렇게 쓰거나 또는 is not ~
+
+
+
+
+
+------------------------------------------------------------------------
+★3-8
+import requests
+from bs4 import BeautifulSoup
+
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+data = requests.get('https://movie.naver.com/movie/sdb/rank/rmovie.naver?sel=pnt&date=20210829',headers=headers)
+
+soup = BeautifulSoup(data.text, 'html.parser')
+
+--주석--
+#old_content > table > tbody > tr:nth-child(2) > td.title > div > a
+#old_content > table > tbody > tr:nth-child(3) > td.title > div > a
+
+#old_content > table > tbody > tr:nth-child(2) > td:nth-child(1) > img
+#old_content > table > tbody > tr:nth-child(3) > td:nth-child(1) > img
+
+#old_content > table > tbody > tr:nth-child(2) > td.point
+#old_content > table > tbody > tr:nth-child(3) > td.point
+--------
+
+
+movies = soup.select('#old_content > table > tbody > tr')
+
+for movie in movies:
+    a = movie.select_one('td.title > div > a')
+    if a is not None:
+        title = movie.select_one('td.title > div > a').text
+        rank = movie.select_one('td:nth-child(1) > img')['alt']
+        star = movie.select_one('td.point').text
+        print(rank, title, star)
+
+
+
+if 조건문때문에 조건문 위에 a를 반드시 넣어야하고 a가 정의되지 않은 상태에서 rank 나 star에 관해서쓰면
+a가 정의되지 않았기때문에 분명 출력물중에 정상이아닌 None 이 있어서 rank랑 star를 코드를 정확하게 잘짜도
+None 때문에 오류나는 부분이 있어서 전체가 박살남. 첨에 이거 생각안하고 코드짰는데 왜안되지? 코드똑같은데? 했었지.
+
+
+
+
+
+
+
+
+
+
+
+
+★3-9
+데이타베이스: 꺼내쓰기 쉽게 잘 정리되어있음
+데이타베이스는 index 라는 순서로 정렬되어있음.
+
+db에는 두가지 형태가있음.
+SQL : 칸을 만들어두고 채우는느낌. : 정형화되어있어서 데이타가 이상한게 들어올리가없고 찾을때도 빨리찾음. 그러나 스타트업처럼 자료가 계속 바뀌는경우 유연하게 대처하기가 힘듦. 대표적: MySQL
+NoSQL : 정해진 칸이 없고 그냥 들어오는 대로 쌓는것. 장단점이 반대. 노에스큐엘은 초기스타트업에서 자주씀. 대표적: mongoDB
+
+
+
+mongodb+srv://test:<password>@cluster0.fciykbx.mongodb.net/?retryWrites=true&w=majority
+
+
+
+
+★3-12
+데이타베이스에 넣는 데이터연습
+doc = {'name':'bobby','age':27}
+db.users.insert_one(doc)
+
+근데 결국 doc은 딕셔너리니까
+doc없이그냥
+db.users.insert_one({'name':'bobby','age':27}) 이렇게써도되는데 그냥 doc을 이용하자.
+
+
+출력중에 _id : 오브젝트 머시기는 몽고디비에서 통상적으로 적는거라 볼필요없음.
+따라서 그냥
+all_users = list(db.users.find({},{'_id':False})) <<--------이런식으로 언더바 아이디를 False 해주면
+
+for user in all_users:
+    print(user)
+출력물에 언더바 아이디이후로 필요없는부분 안나옴.
+
+{'name': 'bob', 'age': 27}
+{'name': 'bob', 'age': 27}
+{'name': 'john', 'age': 20}
+{'name': 'ann', 'age': 20}
+{'name': 'bobby', 'age': 27}
+{'name': 'john', 'age': 20}
+{'name': 'ann', 'age': 20}
+
+
+
+
+아무튼 이렇게하면 여러개를 찾는방법이고
+이번엔 이름이 bobby인 애 하나만찾고싶다면
+
+user = db.users.find_one({'name':'bobby'})
+print(user)
+
+하면 출력물로
+{'_id': ObjectId('62bbfb9589d2f91cf75c79da'), 'name': 'bobby', 'age': 27}
+
+
+
+
+
+이번엔 db를 수정해보자
+수정은 코드가좀 헤깔려서 오타가 날 확률이 있으니 조심.
+db.users.update_one({'name':'bobby'},{'$set':{'age':19}})
+하나하나 보자.
+db 데이타베이스에가서
+users 유저스db에서
+update_one 업데이트를 하나 하는데
+({'name':'bobby'},{'$set':{'age':19}}) 네임이 바비인 애를 찾아서 에이지를 19로 만들어라.
+
+(조건,수정내용)
+
+
+
+
+
+
+이번엔 DB에서 삭제를 해보자
+db.users.delete_one({'name':'bobby'})
+바비를 지움.
+
+★3-14
+movie = db.movies.find_one({'title':'가버나움'},{'_id':False})
+print(movie)
+
+출력물은
+{'title': '가버나움', 'rank': '03', 'star': '9.59'}
+
+
+팁으로 {} 안에 들어가있으면 찾을때[''] 이거쓰면되고
+           밖에 있으면 .text 쓰면됨.
+
+9.59가 출력되게 해야되니까 star 값이 필요하고 {} 안에들어있으니
+print(movie['star'])하면 출려물로
+9.59
+잘나옴.
+
+
+
+
+영화제목이 가버나움인 영화의 평점만 가져오는방법.
+from pymongo import MongoClient
+client = MongoClient('mongodb+srv://test:sparta@cluster0.fciykbx.mongodb.net/Cluster0?retryWrites=true&w=majority')
+db = client.dbsparta
+
+몽고db서버가져오고
+
+
+movie = db.movies.find_one({'title':'가버나움'},{'_id':False}))
+print(movie['star'])
+그러면 출력물이
+9.59
+
+
+
+
+
+
+
+
+
+이번에는 가버나움과 평점이 같은 영화제목가져오는방법
+from pymongo import MongoClient
+client = MongoClient('mongodb+srv://test:sparta@cluster0.fciykbx.mongodb.net/Cluster0?retryWrites=true&w=majority')
+db = client.dbsparta
+몽고디비 서버가져오고
+
+movie = db.movies.find_one({'title':'가버나움'})
+타이틀이 가버나움인애 하나 찾고
+
+star = movie['star']
+star 라는 새로운 변수에 영화평점변수인 star(9.59) 대입시킨담에
+
+all_movies = list(db.movies.find({'star':star},{'_id':False}))
+모든 무비중에 별점이 star(9.59) 랑 같은값 적용하고
+for m in all_movies:
+    print(m['title'])
+m 이라는 새로운 변수에 조건맞는무비들 다돌려서
+영화제목만 추리기.
+
+출력물은
+그린 북
+가버나움
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

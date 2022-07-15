@@ -1,0 +1,91 @@
+★4-2
+서버를 만들 수 있는 프레임워크 즉, flask
+플라스 프레임워크는 서버를 구동시켜주는 편한 코드 모음집이다.
+
+서버를 만든다는것은 굉장히 어려운 일이다.
+서버를 만들 수 있는 엄청 큰 라이브러리가 있는데 우리는 그것을 프레임워크라고 부른다.
+
+프레임워크 없이 서버를 만든다 = 고추를 빻아서 직접 고추장을 만들고 떡볶이를 만든다.
+프레임워크를 사용하여 서버를 만든다 = 3분 떡볶이 세트
+
+서버를 직접 만드는 개발자는 이세상에 없다(없진 않겠지만....)
+
+
+★4-3
+👉 Flask 서버를 만들 때, 항상,
+
+프로젝트 폴더 안에,
+ **ㄴstatic 폴더** (이미지, css파일을 넣어둡니다)
+ **ㄴtemplates 폴더** (html파일을 넣어둡니다)
+ **ㄴapp.py 파일**
+
+
+서버폴더에다가 html 코드 다쓰기는 좀 뭐하니까 템플레이트에 적는것.
+따라서 서버(app.py) 에다가
+from flask import Flask, render_template
+app = Flask(__name__)
+
+라고 랜더 템플레이트를 적어주고 그밑에
+@app.route('/')
+def home():
+   return render_template('index.html')
+
+이렇게 하면 인덱스.html 에 있는 html 코드를 불러오는것.
+
+
+
+http://localhost:5000 이라는뜻은 내가 만든 서버가 나한테 웹페이지를 준거다.
+
+
+
+★4-4
+$.ajax({
+          type: "GET",
+          url: "/test?title_give=봄날은간다",
+
+여기서 url의 뜻은 /test라는 창구에가서 요청을 해야하는데 title_give라는 이름으로 봄날은 간다라는 데이터를 내가 가져갈께.
+
+
+data: {},
+          success: function (response) {
+            console.log(response)
+          }
+        })
+
+그리고 잘 된다면 다시 너가주는 데이터를 내가 콘솔에다가 찍어볼께
+
+
+
+
+
+
+
+app.py에서 
+@app.route('/test', methods=['POST'])
+-> /test라는 창구를 우리가 만들었고 post만 받는것은 이쪽으로 와라
+창구는 /test로 같은데 get을 받으면 get만 받는쪽으로 가겠지
+
+
+
+
+★4-6
+몽고디비아틀라스 혹시모를 주소
+https://cloud.mongodb.com/
+브라우즈 콜렉션즈
+
+
+
+
+★4-7
+새로고침코드
+window.location.reload()
+
+
+
+
+
+
+
+
+
+

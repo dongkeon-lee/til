@@ -1,0 +1,28 @@
+function toggle_sign_up() {
+    if ($("#sign-up-box").hasClass("is-hidden")) {
+        $("#sign-up-box").removeClass("is-hidden")
+    } else {
+        $("#sign-up-box").addClass("is-hidden")
+    }
+}
+
+
+
+hasClass 는 그런 클래스를 가지고 있다는걸 의미
+removeClass 는 해당 클래스를 지우겠다는걸 의미
+addClass 는 해당 클래스를 추가하겠다는걸 의미
+
+영상 강의에서는 어떤건 숨겨진걸 다시 나타내고,
+어떤건 나타내져있던걸 숨기는 기능을 위해 이 3줄을 이용한다.
+이 경우, 하나의 id가 할당된 어떤 기능에 이걸 적용하면 3줄이지만
+많은 id에 적용하면 3줄이 곱셈으로 늘어날것이다. 당장 영상강의에서는 6개의 영역이 이런 기능을 해야해서
+18줄이나 만들어지게 될것이다.
+
+이런 비효율을 줄이기 위해 jquery가 toggleClass 라는걸 만들었다.
+
+
+function toggle_sign_up() {  
+    $("#sign-up-box").toggleClass("is-hidden")
+}
+클래스를 토글 식으로 3줄의 기능을 한줄로 압축한것. 
+가지고있냐? -> 갖고있으면 현재클래스지우고 -> 안갖고있으면 클래스 추가해라          =      1줄로 압축하자

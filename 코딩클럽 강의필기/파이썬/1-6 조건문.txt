@@ -1,0 +1,19 @@
+
+money = 2600
+
+if money > 3800 :
+    print('택시를 타자')
+elif money > 2500 :
+    print('버스를 타자')
+else :
+    print('돈이 없다')
+    print('그럼 뭘 타지?')
+
+print('집에가자')
+
+->버스를 타자
+   집에가자
+
+
+
+elif는 여러개 쓸 수 있다.
