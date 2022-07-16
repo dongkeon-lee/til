@@ -1,0 +1,52 @@
+붕어빵 틀을 class라고 생각하자
+그것이 어떤 속성/모양을 갖는지 미리 붕어빵 틀처럼 정해져있는거다.
+
+이 틀을 통해서 만들어진 붕어빵을 instance 라고 생각하자.
+내가 처음 찍어낸 붕어빵과 그 다음 찍어낸 붕어빵은 서로 다르다.
+그러나 붕어빵이라는 모습은 동일하게 갖고있다.
+
+또한 그 붕어빵을 한입 베어먹으면 먹지않은 붕어빵들과는 또 다른 모습을 띄게 될것이다.
+instance는 한번 생성되고 나면 그자체의 상태를 가지고 그 자체로 변화한다.
+
+마무리하자면 어떤 class 로 부터 만들어진 객체를 그 class 의 instance 라고 한다.
+
+
+
+
+
+메소드란?method
+어떤 작업을 수행하는 코드를 하나로 묶어놓은것
+
+class Calculation {
+    int add(int x, int y) {
+        return x + y;
+    }
+    int subtract(int x, int y) {
+        return x - y;
+    }
+}
+
+클래스 지정해주고
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        // write your code here
+        Calculation calculation = new Calculation();
+        int addResult = calculation.add(1, 2);
+        int subtractResult = calculation.subtract(5,3);
+
+        System.out.println(addResult);
+        System.out.println(subtractResult);
+
+    }
+}
+
+
+Calculation calculation = new Calculation(); 이걸로 배열 초기화해준담에
+int addResult = calculation.add(1, 2); 이렇게 치면 클래스 내용대로 알아서
+int addResult = calculation.add(x:1, y:2); 로 변환됨. x랑y가 클래스에 있는것처럼 알아서 변환됨.
+
+
+출력하면 3 2 가 나옴

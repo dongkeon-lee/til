@@ -1,0 +1,72 @@
+-문제 설명
+정수 num이 짝수일 경우 "Even"을 반환하고 홀수인 경우 "Odd"를 반환하는 함수, solution을 완성해주세요.
+
+
+-제한 조건
+num은 int 범위의 정수입니다.
+0은 짝수입니다.
+
+
+-입출력 예
+num	return
+3	"Odd"
+4	"Even"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-답
+
+class Solution {
+    public String solution(int num) {
+        String answer = "";
+        if ( num % 2 == 0) { //짝수라면
+            answer = "Even";
+        }
+        else {
+            answer = "Odd";
+        }
+        return answer;
+    }
+}
+
+
+
+
+
+
+알고리즘은 잘 짰다. 다만 기초지식이 좀 부족해서 answer에 이븐과 오드라는 문자열을 저장하는 방법에 혼동이 있었다.
+String answer = "Even" 이렇게 저장했더니 오류가 났다. 왜? 오류를 보면 알 수 있지.
+error: variable answer is already defined in method solution(int)
+            String answer = "Even";
+                   ^
+answer 라는 변수가 이미 타입을 지정된 상태인데 또해서그래. 지워임마
+그리고 변수에 문자열 넣는거 좀 어색한데 기억좀 잘해두고. 주석도 좀 써!!

@@ -1,0 +1,197 @@
+접근 제어자 (access modifier)
+접근 제어자는 멤버 변수/함수 혹은 클래스에 사용되며 외부에서의 접근을 제한하는 역할을 합니다.
+
+→ private : 같은 클래스 내에서만 접근이 가능합니다
+
+→ default(nothing) : 같은 패키지 내에서만 접근이 가능합니다.
+
+→ protected : 같은 패키지 내에서, 그리고 다른 패키지의 자손클래스에서 접근이 가능합니다.
+
+→ public : 접근 제한이 전혀 없습니다.
+
+
+위의 설명을 토대로 접근 범위에 대해 정리를 하면 다음과 같습니다.
+(좁음)                                                                    (넓음)
+private     →     default     →     protected     →     public
+
+
+
+
+
+
+
+super 는 내가 상속받은 부모클래스를 가리키는 키워드
+
+
+
+
+
+
+
+
+
+
+
+
+java 에 새로만들기로 패키지 만들고 pkg 라고 이름지어보자.
+package pkg;
+
+public class ModifierTest {
+
+    private void messageInside() {
+        System.out.println("This is private modfier");
+    }
+
+    public void messageOutside() {
+        System.out.println("This is public modfier");
+        messageInside();
+    }
+
+    protected void messageProtected() {
+        System.out.println("This is protected modfier");
+    }
+}
+
+
+
+
+
+
+
+
+입력 후 다시 Main 자바로 돌아가서
+
+import pkg.ModifierTest;     <<------다른 패키지를 참조할꺼면 이렇게 임포트 해줘야함
+
+class Child extends ModifierTest {
+    void callParentProtected() {
+        System.out.println("call my parent's protected method");
+        super.messageProtected();
+    }
+
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        ModifierTest modifierTest = new ModifierTest();
+        modifierTest.messageOutside();
+
+    }
+}
+
+
+>> This is public modfier
+This is private modfier
+
+
+
+
+
+패키지안에 있는 프라이빗 퍼블릭 프로텍티드 중에서 자바에서 접근할 수 있는것은 퍼블릭뿐임. 얘는 접근하는데 제한이 없음
+그래서 퍼블릭에 있는 함수인 메세지아웃사이드 함수를 호출할 수 있음. 근데 그 함수 내에는 자신과 같은 ModifierTest 클래스에 있는
+프라이빗을 호출할 수 있어서 프라이빗의 메세지인사이드 함수를 호출 하도록 코드를 짤 수있었고 결과적으로 출력이 2개가 나오게된것
+
+
+
+
+
+
+
+
+
+자바에서 한줄을 추가해보자
+modifierTest.messageInside(); 이거를 추가하자
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        ModifierTest modifierTest = new ModifierTest();
+        modifierTest.messageOutside();
+        modifierTest.messageInside();
+
+    }
+}
+
+애초에 이러면 코드쓸때 밑에 추천목록에 뜨지도 않고 강제로 코드를 써도 빨간줄이 그어지면서 오류가난다. 왜?
+말했다시피 메세지인사이드 함수는 패키지 내에있는 프라이빗 접근제어자를 가진녀석내에 있기 때문에 그녀석을 호출하고싶으면
+반드시 같은 클래스 내에서만 가능하다.
+
+
+마찬가지로
+modifierTest.messageProtected();
+이것도 추가하면 같은 현상이다.
+프로텍티드안에 있는 함수인데, 프로텍티드는 같은패키지나 다른 패키지의 자손클래스에서만 호출할 수 있기때문이다. 
+그럼 얘는 어케 호출해야할까?
+
+
+
+
+
+그 밑에다가 
+        Child child = new Child();
+        child.callParentProtected();
+이 Child 라는 상속 자식클래스의 인스턴스를 생성하여 자식 클래스 내에 있는 함수를 호출한다. Child 는 패키지에 있는 ModifierTest
+라는 부모 클래스의 상속 자손이므로 이곳에서는 프로텍티드를 호출 할 수 있게된다.
+자손클래스 코드내에도 그렇게 짰잖아.
+void callParentProtected() {
+        System.out.println("call my parent's protected method");
+        super.messageProtected();
+    }
+
+슈퍼는 이제 부모클래스인 ModiferTest 를 나타내고 패키지 내에 있는 프로텍트테스트 클래스 내에 있는 프로텍트 클래스의 함수를 호출하게 
+되면서 프로텍트에 접근이 가능하다.아무튼 자바를 실행시키면
+>>
+This is public modfier
+This is private modfier
+call my parent's protected method
+This is protected modfier
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+참고로 Child 상속시에 그 아래에 적은
+void callParentProtected() {}
+에서 앞에 클래스가 아무것도 안붙어있지? 그래서 이건 그냥 패키지 private 인거임.
+그리고 메인 클래스에서 얘를 호출할 수 있었던거는 같은 패키지(얘들은 패키지가 아니라 java에 있지만 그냥 같은 탭?에 있으니까 
+같은 패키지라고 표현. 패키지도 결국엔 자바탭과 똑같이 생겨서 사실 부르는 이름만 다른거같음)내에 있기때문에 호출이 되는것
+
+만약에 모디파이어테스트 패키지내에
+void messagePacakagePrivate() {
+        System.out.println("This is package private modifier");
+    }
+이걸 하나 추가해주고 이젠 메인자바로 돌아가서
+아까 메인자바에서 메세지인사이드,아웃사이드로 호출이 불가능한것처럼 그밑에
+        modifierTest.messagePackagePrivate();
+이렇게 써도 저 함수는 다른패키지에 들어있으므로 이것도 역시 호출이 안된다.
+
+
+
+
+
+
+
+
+
+
+
+
+야근데 이거 왜쓰냐?
+객체지향, 객체들 간의 상호 작용을 코드로 표현하는거야. 클래스가 여러개가 있는데 그것들간에 상호작용이 분명히 있을테고
+그렇게되면 접근 권한이 필요해지게된다. 클래스 내에서 부적절한 사용으로부터 보호해주는 기능을 하고있다.
+이것을 전문용어로
+'캡슐화(encapsulation)' 
+라고 한다.
