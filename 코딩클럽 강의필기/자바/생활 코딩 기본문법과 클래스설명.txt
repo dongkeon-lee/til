@@ -1,0 +1,202 @@
+integer 정수 ( -4 -3 -2 0 1 2 ...)
+a = 1; 에서 a 에는 정수에 해당하는 타입을 부여해야한다.
+int a = 1;
+
+
+int b = 1.1;
+이건 오류다. 왜? 내가 b 에는 정수의 타입만 올 수 있다고 지정을 이미
+해놨잖아. int b 라고.
+그래서 b는 1.1이 될 수 없다. 1.1은 정수가 아닌 '실수' 이다.
+(-2.0 -1.0 -1.29 -3.694954195 0 1.0 2.0 2.56465 .....)
+double 이라는 타입을 써야한다. 실수값을 담을 수 있다.
+double b = 1.1;
+
+
+c = "Hello World";
+내가 여기다가 int 라는 타입을 붙일 수 있을까? 당연히 안되지.
+헬로월드는 문자열이거든. 문자열을 지칭하는 타입은 String 이다.
+String c = "Hello World"; 
+
+
+
+
+
+
+CASTING : 컨버팅하는 기술. 변환.
+
+
+
+double a = 1.1;
+
+1; 은 정수다. integer이다.
+하지만 이 정수를 double에 담으면 어떻게될까? 오류가날까?
+double b = 1; 이것을 출력하면 1.0이 나온다. 알아서 더블 타입에 맞춰서 변형된다.
+1에서 1.0이 되면서 잃어버리는 값은 없고 얻는 값만 있어서 쉽게 변형될 수 있다.
+
+int c = 1.1; 이건 안된다.
+1.1을 도저히 int 인 정수로 변형시킬 수가 없다.
+더블형은 소수점이 있어서 만일 이를 정수형으로 만들면 0.1을 잃어버리게 되므로 변형될 수 없다.
+
+
+int c = 1.1; 이게 안되니
+double c = 1.1; 로 바꿔야겠지.다른방법도있다.
+
+int c = 1.1; 이것을 강제로 integer로 바꾸는 방법이다.
+int c = (int) 1.1; 이렇게 하면 어떻게 해석되느냐, 여전히 1.1은 double 타입이다.
+하지만 (int) 1.1 은 강제로 integer 다.
+그럼 c 를 출력하면 어떻게 뜰까?
+1 이 뜹니다.
+따라서 강제로 바꾸게 되면 0.1 이라는 손실이 일어난다.
+이것을 아까 위에서 double b = 1; 이 출력하면 알아서 1.0으로 변환되어 출력되던것에
+적용할 수 있다.
+double b = (double) 1; 사실은 이랬던거지. 하지만 1.1에 (int) 를 강제로 붙였을 때와는 다르게
+손실이 전혀 일어나지 않으므로 알아서 바꿔줬지만 1.1에 (int) 를 강제로 붙였을 때는 손실이
+일어나므로 자동으로 변환되지 않고 손실을 감수하고싶으면 사용자가 알아서 부담해야하는것이다.
+
+
+
+1은 정수다. integer다. 근데 이를 String으로 캐스팅 하고 싶으면 어떻게 하느냐.
+String a = integer.toString(1); 인티저인 1을 스트링으로 바꾼다는 소리.
+출력해보면 1 이 나온다. 그러나 출력된 이 1 은 더이상 숫자가 아니라 문자열이다.
+이걸 어떻게 확인하냐,
+.getClass()
+이 변수의 데이터 값이 어떤 타입인지 알 수 있게 해주는 아주 좋은 함수다.
+System.out.println(a.getClass()); -> class java.lang.String 이라고 출력된다. 스트링 맞지?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.youtube.com/watch?v=x4LXhjzv8q4&list=PLuHgQVnccGMAIluRRVsC1e79ri-dwnBmR&index=25
+
+어떤 폴더 내부에 존재하는 Elevator.java 파일이 존재하고있고 이 파일이 든 org 라는 이름의 폴더
+를 자바를 실행시켜서 폴더채로 내 프로젝트가 구동되고있는 폴더에 넣어보자.
+org/opentutorials/iot/Elevator.java 경로가 이렇다.
+자 그럼 우리 아파트의 엘리베이터를 호출시키는 코드를 짠다고 가정해보자.
+내가 가져온 Elevator.java 는 엘리베이터를 호출하는 핵심 코드들이 들어있다.
+이것을 내 프로젝트에 써먹기위해 import로 가져오자
+import org.opentutorials.iot.Elevator;
+이제부터 경로 다 쓸 필요없이 Elevator 라고만 써도 Elevator.java를 불러올 수 있게되었다.
+메소드 밑에 이제 코드를 작성해보자.
+Elevator myElevator = new Elevator("푸르지오 108동");
+이제 내 엘리베이터한테 명령을 내리자. 1층으로 엘리베이터 보내!
+myElevator.callForUp(1);
+callForUp은 나는 위로 올라갈꺼다 라는 의미를 가지고 1층으로 엘리베이터를 호출한다.
+
+이제 Security를 꺼야겠다.
+마찬가지로 위에 같은 경로에 있는 Security.java를 inport 하자.
+그리고 메소드밑에
+Security mySecurity = new Security("푸르지오 108동");
+저 주소에 있는 내 방범시스템을 지칭한다.
+mySecurity.off();
+
+이렇게 괄호로 쳐져 있는 함수들을 메소드 라고 한다.
+
+이제 불을 켜보자
+import로 또 Lighting.java 를 써주자.
+그리고 또 메소드밑에
+Lighting hallLamp = new Lighting("푸르지오 108동 / Hall Lamp");
+hallLamp.on();
+
+Lighting floorLamp = new Lighting("푸르지오 108동 / floor Lamp");
+floorLamp.on();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+클래스 안에는 변수(field)와 메소드(method)가 있는데 여기서 변수(field)는 
+메소드 안에서 호출하는 지역변수(variable)과는 다르다.
+c언어로 비교하면 field는 전역변수, variable은 지역변수라고 할 수 있다.
+
+
+
+package 
+│ class
+││field(class 안에 field)           
+││method 
+│││variable(class 안에 method 안에 variable)
+
+
+
+
+class
+서로 연관된 메소드와 변수들을 그룹화 한다.
+
+Math 클래스에는 floor() 라는 메소드가 있다. '내림' 이라는 뜻으로 플로어 메소드는 소수점 아래를 전부 버리는 기능이다.
+Math.floor(1.6) 은 이 자체로 1.0이다. 확인해보자
+System.out.println(Math.floor(1.6)); -> 1.0
+
+반대로 '올림' 이라는 뜻의 ceil, 천정이 있다.
+System.out.println(Math.ceil(1.6)); - > 2.0
+
+즉 클래스는 뭐다? 서로 연관된 변수와 메소드들을 모아서 그거에 이름을 붙인거다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
