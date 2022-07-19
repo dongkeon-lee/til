@@ -1,0 +1,67 @@
+메소드 : 클래스가 가지고 있는 기능을 의미.
+그래서 메소드는 클래스 내부에 선언이됨.
+
+선언방법:
+
+public 리턴타입 메소드명(매개변수들) {필요한기능들 구현}
+
+리턴타입:메서드가 실행된 후에 결과값을 되돌려주는 부분을 이야기함. 그때 어떤 타입으로 결과값을
+돌려줄거냐 하는것
+
+
+
+메소드는 저 구문을 무조건 따르는건 아니다.
+예를들면
+1.값(매개변수)이 들어오는곳도 없고 output(리턴이 없음) 하는 곳도 없는 메소드. 리턴값이 없음은 void로 표현한다
+  public void 메소드명 () {}
+
+2.정수를 받아들여서 뭔가를 하고 리턴은 하지않는 메소드.
+  public void 메소드명 (int x) {}
+
+3.아무것도 받아들이지 않지만 뭔가를 수행하고 정수를 리턴함. 리턴한다고 했으니 메소드 안에서 반드시 리턴할 부분이 실행되어야 할것임.
+  public int 메소드명 () {
+    return 10;
+}
+이럴경우 반드시 정수값을 리턴해줘야함.
+return 이런식으로 리턴을 사용해서 돌려줌.
+
+4.정수값을 두개 받아들이고 리턴은 하지않는 메소드.
+  public void 메소드명 (int x, int y) {}
+
+5.정수를 받아서 뭔가를 하고 정수를 리턴하는 메소드.
+  public int 메소드명 (in y) {
+    return y*2;
+}
+
+
+
+정리하자면
+public class MyClass{
+    // 매개변수와 리턴 값이 없는 메소드
+    public void method1() {
+        System.out.println("method1이 실행됩니다.");
+    }
+
+    // 매개변수로 정수를 받고, 리턴값은 없는 메소드
+    public void method2(int x) {
+        System.out.println(x + " 를 이용하는 method2입니다.");
+    }
+
+    // 매개변수는 없고, 정수를 리턴하는 메소드
+    public int method3() {
+        System.out.println("method3이 실행됩니다.");
+        return 10;
+    }
+
+    // 매개변수로 정수를 받고, 정수를 리턴하는 메소드
+    public void method4(int x, int y) {
+        System.out.println(x + y + " 를 이용하는 method4입니다.");
+    }
+
+    // 매개변수로 정수를 받고, 정수를 리턴하는 메소드
+    public int method5(int y) {
+        System.out.println(y + " 를 이용하는 method5입니다.");
+        return y*2;
+    }
+}
+}

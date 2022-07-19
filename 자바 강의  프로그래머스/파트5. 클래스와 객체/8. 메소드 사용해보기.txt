@@ -1,0 +1,42 @@
+클래스가 가진 메소드를 사용하기 위해서는 반드시 객채로 만들어야 사용 할 수 있다.
+붕어빵틀이 아무리 있어봐야 붕어빵을 만들어내지 않는다면 아무 쓸모없는것과 같다.
+
+
+MyClass 라는 이름의 자바클래스프로젝트에 이전강의에서 다양한 메소드들을 선언해놨음.
+MyClassExam 이라는 자바클래스프로젝트를 새로만들어서 시작해보자.
+
+
+MyClass myclass = new MyClass(); (myclass 라는 개체가 하나 만들어짐)
+myclass. 이렇게 쓰면 사용할 수 있는 메소드들이 뜰거임. 이중에 method1 이라는 메소드를 사용해보자
+myclass.method1();
+그럼 해당 메소드가 만들어진 MyClass 프로젝트에 적힌 method1 메소드부분이 실행된다.
+System.out.println("method1이 실행됩니다."); 라는것이 그곳에 들어있었으니
+myclass.method1();을 쓰면 콘솔창에 
+method1이 실행됩니다.
+가 출력된다.
+
+myclass.method2(); 를 적어보자. 근데 method2 메소드는 매개변수로 정수값을 int 클래스로
+받아들이기로 정의했었잖아. 그러니까 그 값을 같이 적어서 보내줘야 해당 메소드를 사용가능.
+myclass.method1(10); 이런식으로.
+System.out.println(x + " 를 이용하는 method2입니다."); 라는것이 그곳에 들어있었으니
+10 를 이용하는 method2입니다.
+가 출력된다.
+
+myclass.method3(); 를 적어보자. 매개변수를 받지 않는다고 정의했지만 정수(int)값을 리턴해주기로 
+정의했었다.
+int value = myclass.method3(); 이런식으로 적어야한다. 그러면 밸류값이 리턴값을 받아줄거임
+System.out.println("method3이 리턴한 값" + value); 이것을 MyClassExam에 적어주고 실행하면
+method3이 리턴한 값 10 
+이 출력된다.
+
+myclass.method4(); 는 정수값 2개를 입력해줘야 하는 메소드다 
+myclass.method4(5, 10); 이렇게 써보자 
+15 를 이용하는 method4입니다.
+가 출력된다.
+
+myclass.method5(); 는 y 값을 받아서 리턴하는 메소드 
+int value2 = myclass.method5(55);
+System.out.println("method5가 리턴한 값" + value2);
+55를 이용하는 method5입니다
+method5가 리턴한 값 110
+이 출력된다

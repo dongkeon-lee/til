@@ -1,0 +1,267 @@
+이상한 문자 만들기
+문제 설명
+문자열 s는 한 개 이상의 단어로 구성되어 있습니다. 
+각 단어는 하나 이상의 공백문자로 구분되어 있습니다. 
+각 단어의 짝수번째 알파벳은 대문자로, 홀수번째 알파벳은
+소문자로 바꾼 문자열을 리턴하는 함수, solution을 완성하세요.
+
+제한 사항
+문자열 전체의 짝/홀수 인덱스가 아니라, 단어(공백을 기준)별로 짝/홀수 인덱스를 판단해야합니다.
+첫 번째 글자는 0번째 인덱스로 보아 짝수번째 알파벳으로 처리해야 합니다.
+입출력 예
+s	return
+"try hello world"	"TrY HeLlO WoRlD"
+입출력 예 설명
+"try hello world"는 세 단어 "try", "hello", "world"로 구성되어 있습니다. 
+각 단어의 짝수번째 문자를 대문자로, 홀수번째 문자를 소문자로 바꾸면 "TrY", "HeLlO", "WoRlD"입니다. 
+따라서 "TrY HeLlO WoRlD" 를 리턴합니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+답
+
+
+
+
+
+
+
+
+
+
+
+내가푼문제
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        String[] stringarray = new String[s.length()];
+        for (int j = 0; j < s.length(); j++) {
+            stringarray[j] = "";
+            answer += stringarray[j];
+        }
+        
+        for (int i = 0; i < s.length(); i++) {
+            if (i == 0) { // i 가 0일때
+                char insert = Character.toUpperCase(s.charAt(i));
+                stringarray[i] += insert;
+                answer += stringarray[i];
+            }
+            else {
+                if (i % 2 == 0) { // i 가 짝수 일때
+                    char insert = Character.toUpperCase(s.charAt(i));
+                    stringarray[i] += insert;
+                    answer += stringarray[i];
+                }
+                else { // i 가 홀수 일때
+                    char insert = Character.toLowerCase(s.charAt(i));
+                    stringarray[i] += insert;
+                    answer += stringarray[i];
+                }
+            }
+        }
+        
+        
+        return answer;
+    }
+}
+
+
+오류났음. 각 띄어쓰기마다의 단어를 기준으로 짝/홀수를 해야되는데
+나는 공백까지 i 에 통채로 넣어서 문자열 전체갯수를 짝홀수로 나눴음.
+그래서 단어가 홀수개로 끝나는 문장의 경우엔 잘맞는데 짝수개로 끝나는 문장은
+홀짝이 맞지를 않는것임.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+다시풀어봤음
+
+class Solution {
+    public String solution(String s) {
+        String[] split = s.split(" ");
+        String answer = "";
+        
+        for (int i = 0; i < split.length; i++) {
+            for (int j = 0; j < split[i].length(); j++) {
+                if (j % 2 == 0) {
+                    char insert = Character.toUpperCase(split[i].charAt(j));
+                    answer += insert;
+                }
+                else {
+                    if (j == 0) {
+                        char insert = Character.toUpperCase(split[i].charAt(j));
+                        answer += insert;
+                    }
+                    else {
+                        char insert = Character.toLowerCase(split[i].charAt(j));
+                        answer += insert;
+                    }
+                }
+                
+            }
+            if (i == split.length - 1) {//단어단위로 자른 마지막에는 띄어쓰기 하지마셈
+                
+            }
+            else {
+                answer += " ";
+            }
+            
+            
+        }
+        return answer;
+    }
+}
+
+근데 이제는 뭐가 문제인지 모르겠음 ㅋㅋ
+내가 입력한 테스트예시코드들도 대충 예상해서 넣어봤는데 다 잘됨.
+제출만하면 몇개가 실패함. 내생각에는 이게 이상한점이 없는데 왜 안될까
+왜냐하면 마지막에 띄어쓰기할 수도 있는데 나는 무조건 마지막에 띄어쓰기가 없거든. ㅋㅋ
+
+핵심은 이거다
+String[] array = s.split("");
+어? 나도썼는데? 응 아니야
+String[] array = s.split(" ");
+너가 쓴건 이거야 ㅋㅋ
+뭐가 다르냐고? 띄어쓰기의 존재다.
+String[] array = s.split(""); 이렇게쓰면 기준이 없어져서 그냥 모든 문자를 하나하나 구분 배열한다. 공백을 포함해서. -> [H, e, l, l, o,  , N, e, w,  , W, o, r, l, d,  ]
+String[] array = s.split(" "); 이렇게쓰면 기준이 띄어쓰기라서 띄어쓰기를 양분해서 단어별로(그러니까 문자열 수준으로) 구분 배열한다. -> [Hello, New, World]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+마지막
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        String[] split = s.split("");
+        int placeholder = 0;
+        
+        for (int i = 0; i < split.length; i++) {
+            if (split[i].equals(" ")) {
+                answer += " ";
+                placeholder = 0;
+            }
+            else {
+                if (placeholder % 2 == 0 || placeholder == 0) {
+                    answer += split[i].toUpperCase();
+                    placeholder += 1;
+                }
+                else {
+                    answer += split[i].toLowerCase();
+                    placeholder += 1;
+                }
+
+            }
+
+        }
+        //for문 끝나는곳        
+        return answer;
+    }
+}
+드디어풀었다.
+아니 공백 조건문이 작동을 안하는거임;
+if (split[i] == " ") {
+이게 안되는거임... 띄어쓰기가 부족한가? 아니면 그냥 "" 이렇게 둬야하나? 아니었음 ㅋㅋ 전에랑 똑같음
+if (split[i].equals(" ")) { 이렇게써야함 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+아이제잘되더라 
+
+
+
+문자열에서 내가 원하는 문자 대입변수에 가져오기.
+char 대입변수 = Character.toLowerCase(문자열변수.charAt(5));
+
+
+
+
+모든 문자열을 '문자단위' 로 쪼개서 배열하기
+String[] split = s.split("");
+
+
+
+
+띄어쓰기를 기준으로 '문자열 단위' 로 쪼개서 배열하기
+String[] split = s.split(" ");
+
+
+
+
+
+
+
+
+
+
+
+
+
