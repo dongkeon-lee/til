@@ -1,0 +1,90 @@
+변수범위 라는게있음.
+퍼블릭 머시기 해서 지정한 범위 내에서 정한 변수들은 거기서만 작동함.
+
+모든 클래스는 인스턴스화 하지 않은 채로 사용할 수 없다.
+붕어빵틀이 붕어빵은 아닌거오ㅏ 같은 이치.
+
+지금까지 클래스를 정의하고 해당클래스를 new 하지 않았음에도 메인메소드가 실행될 수 있었던
+이유는 
+static 
+이라는 키워드 때문이다. 이 키워드를 붙여주면 클래스가 인스턴스화 되지 않아도
+스태틱한 매소드나 필드는 사용할 수 있다. 객체를 생성하지 않아도 사용할 수 있다.
+스태틱하지 않은 메소드나 필드는 사용할 수 없다.
+
+
+public class VariableScopeExam {
+    int globalScope = 10;
+
+
+    public static void main (String[] args) {
+        System.out.println(globalScope); <---------- 메인 메소드 ariableScopeExam 안에 있는데도 사용불가능
+    }
+}
+
+
+
+
+
+
+
+
+
+
+public class VariableScopeExam {
+    int globalScope = 10;
+
+
+    public void main (String[] args) {
+        System.out.println(globalScope); <---------- 사용가능
+    }
+}
+
+
+
+
+
+그럼 스태틱한 필드를 하나 선언해보자. 메인 메소드 바로 밑에다가 하자.
+static 이라는 키워드를 사용해서 변수를 선언하면 되는데 방식은 똑같다
+static int staticVal = 7;
+
+이제 스태틱한 메소드에서 선언한 필드를 사용해보자
+
+
+public class VariableScopeExam {
+    int globalScope = 10; <-----인스턴스 변수. 인스턴스가 생성될때 생성된다.
+    static int staticVal = 7; <---- 클래스변수. 스태틱한 변수, 값을저장할 공간이 하나뿐이라 값을 공유한다.
+
+    public static void main (String[] args) {
+        System.out.println(globalScope); <-----------사용 불가능
+        System.out.println(staticVal); <---------------사용 가능
+    }
+}
+
+
+스태틱하지 않은 메서드에서도 해당 스태틱 키워드의 변수는 사용가능하다.
+
+
+
+
+
+
+public class VariableScopeExam {
+    int globalScope = 10;
+    static int staticVal = 7;
+
+    public void main (String[] args) {
+        System.out.println(staticVal); <---------------사용 가능
+    }
+}
+
+
+
+
+
+
+System.out.println(globalScope); <----스태틱 메소드 내에서 사용불가능
+스태틱인 메소드 안에서 작동하지 못하던 것을 작동하게 하려면?
+객체를 생성해주면됨
+
+VariableScopeExam v1 = new VariableScopeExam();
+System.out.println(v1.globalScope);

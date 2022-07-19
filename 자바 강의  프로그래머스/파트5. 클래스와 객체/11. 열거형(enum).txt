@@ -1,0 +1,41 @@
+public class EnumExam {
+    public static final String MALE="MALE"; <--- final 은 상수선언 할때 쓰는거
+    public static final String FEMALE="FEMALE";
+    public static void main (String[] args) {
+        String gender1;
+        gender1 = EnumExam.MALE;
+        gender1 = EnumExam.FEMALE;
+
+        gender = "boy";
+    }
+}
+gender1 이라는 필드를 선언했다.
+gender1 에는 스태틱한 변수이므로 클래스명.변수명 으로 써주면된다.
+근데 gender1은 스트링 타입이라서 boy 같은 스트링타입도 그냥 들어갈 수 있다.
+내가 원하는건 메일 또는 피메일만 gender1에 들어가길 원한다.
+이런걸 막기위해서 열거형(enum) 을 사용한다.
+
+
+
+
+
+
+
+
+
+
+
+enum의 사용법
+enum 이름 { 값1,값2; } 이렇게 쓴다.
+
+enum Gender {
+	MALE,FEMALE;
+}
+이때 Gender 는 타입이 되어버린다. 따라서 위에서 gender1은 String 타입으로 선언을 해줬어야 했지만
+이번에는
+Gender gender2; 이렇게 Gender 타입으로 선언을 해줘야 한다.
+gender2 = Gender.MALE;
+gender2 = Gender.FEMALE;
+
+이상태로 아까처럼 이번엔 gender2 에 다른 값을 저장하려고하면 오류가난다
+gender2 = "boy"; <--빨간줄

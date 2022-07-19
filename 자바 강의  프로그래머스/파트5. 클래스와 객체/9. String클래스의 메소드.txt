@@ -1,0 +1,24 @@
+자바에도 미리 만들어진 클래스가 있음
+String 이런거.
+
+String str1="Hello";
+String str2="Hello";
+이때 str1 과 str2 는 Hello 라는 같은 스트링객체를 참조한다.
+String 클래스는 원래의 스트링객체를 바꿀 수 없게 한다.
+
+
+System.out.println(str.concat(" world"));
+이걸로 Hello world 를 출력하고나서 그밑에
+
+System.out.println(str);
+이렇게 해보면 그냥 Hello 만 나온다.
+콘켓으로 붙인 world 는 휘발되어있다.
+
+String 클래스는 이렇게 원래 값이 변하지않는
+불변클래스라고 한다.
+
+콘켓으로 붙인거는 어케된거임?
+자바는 그렇게 붙이게되면 Hello world 라는 새로운 스트링객체를 만들어낸다. 이걸 출력했던거다
+그렇다고해서 str들이 참조하고있던 레퍼런스들이 이걸로 바뀌지는 않는다. str들은 여전히
+Hello 스트링객체만 가리키고있다. 완전히 이걸로 바꾸려면
+str1 = str1.concat(" world"); 라고해줘야 비로소 가리키는 인스턴스가 바뀐다.

@@ -1,0 +1,84 @@
+매개 변수의 갯수나 타입이 조금씩 다르지만 비슷한 기능을 하는 매서드가 여러개 있을 수 있다.
+이런 매서드가 각각 다른이름으로 정의가 되어있다면 어떨때 어떤 매서드를 사용해야하는지 
+구분하기 어려울 수 있다.
+
+메소드 오버로딩 :
+매개변수의 수, 매개변수의 타입이 다른 경우에 동일한 이름으로 메소드를 여러개 정의 할 수 있다.
+
+
+예를들어보자.
+여기 메서드가 하나있다.
+ 정수x 와 정수y 두개의 input 값을 필요로 하고 
+ x+y를 실행하여
+ 정수를 output(return)
+하는 메서드가 있다고 해보자.
+
+그리고 여기 다른 메서드가 하나 있다.
+ 정수x 와 정수y 와 정수z 의 정수값 세개를 input 하여
+ x+y+z를 실행하고
+ 정수를 output(리턴)
+하는 메서드가 있다고 해보자.
+
+마지막으로 여기 또 다른 메서드가 하나 있다.
+ 문자열x 와 문자열y 두개의 문자열을 input하여
+ x+y를 실행하고
+ 문자열을 output
+하는 메서드가 있다고 해보자.
+
+
+이때 각각의 메서드 이름을 뭐라고 할까 고민을 해볼 수 있다.
+그런데 3개의 메서드 전부 매개변수를 받아들여서 그것들을 더해서 리턴하는 일을 하는 메서드들이다.
+이럴때 똑같은 이름으로 메서드 이름을 만들어 줄 수 있다.
+public class MyClass2 {
+    public int plus (int x, int y) {
+        return x+y;
+    }
+
+    public int plus (int x, int y, int z) {
+        return x+y+z;
+    }
+
+    public String plus (String x, String y) {
+        return x+y;
+    }
+}
+모두 메서드 이름을 plus로 동일하다.
+이를 메서드 오버로딩 이라고 한다.
+메서드 오버로딩에 중요한것은 
+타입과 매개변수의 수가 중요하다.
+예를들면 첫번째와 두번째 메서드는 타입은int로 같지만 매개변수의 수가 2개 vs 3개로 달라졌기 때문에 가능했다.
+첫번재와 두번째는 매개변수의 수는 2개로 같지만 타입이 int vs String 으로 달라서 가능했다.
+이때 매개변수의 이름이 다르다고해서 달라졌다고 판단하지는 않는다.
+예를들어서 
+4번째 메서드를 다음과 같이 만들어보자
+
+public int plus (int i, int j) {
+        
+    }
+
+이러면 이제 첫번째 메서드와 충돌이 일어난다. 왜? 타입도 int로 같고 매개변수 수도 2개로 같기 때문에
+메서드 오버로딩이 되지 않아서 이름이 같다고 충돌이 나버린다. 매개변수의 이름이 다른것은(x y i j)
+메서드 오버로딩에 아무상관이 없다는것이다.
+
+
+
+
+
+
+
+<MethodOverloadExam.java>
+public class MethodOverloadExam {
+
+    public static void main (String[] args) {
+        MyClass2 m = new MyClass2();
+
+        System.out.println(m.plus(4, 5));
+    }
+}
+> 9 출력된다.
+
+
+
+System.out.println(m.plus(4,6,7)); 출력해도 17로 잘 출력된다.
+System.out.println(m.plus("hello","world")); 출력해도 helloworld 잘 출력된다.
+

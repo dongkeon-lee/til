@@ -1,0 +1,21 @@
+사진폴더->연도별폴더->장소별폴더 
+                           ->날짜별폴더
+
+자바도 똑같다.
+관련된 Class들을 패키지별로 묶어서 관리한다.
+
+패지를 불러오려면 import를 해야한다
+
+
+import pkg.Hello;
+
+public class HelloExam {
+    public static void main(String[] args) {
+        Hello hello = new Hello();
+    }
+}
+
+
+이때 
+import pkg.*;
+이렇게 별표시로 쓰면 해당 패키지 안에 있는 모든걸 쓰겠다는 의미임
