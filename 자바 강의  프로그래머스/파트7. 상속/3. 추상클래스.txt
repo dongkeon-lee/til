@@ -1,0 +1,39 @@
+추상클래스
+
+모호한 클래스라서 객체가 될 수 없음.
+
+public class Bird {
+}
+새 라는 메인클래스 아래에
+
+public class Bird {
+    public void sing()
+}
+새의 필드(속성)으로 노래한다 라는걸 만들고 싶은데
+어떻게 울음소리를 낼건지 정하고 싶지 않음.
+그럴때 추상 클래스를 쓰는거임
+
+public class Bird {
+    public abstract void sing ();
+}
+abstract 라는걸 붙여주면됨.
+하지만 이때 이 메소드가 추상클래스가 되어버려서
+메인클래스 자체도 추상클래스가 되어야한다.
+
+메서드가 하나라도 추상메서드인 경우 해당 클래스는 추상 클래스이다.
+public abstract class Bird {
+    public abstract void sing ();
+    public void fly() {
+        System.out.println("날다");
+    }
+}
+일반적인 클래스인 fly 도 추상클래스 내에서 그냥 구현됨.
+
+
+
+
+
+상속받는 클래스를 하나 만들고 거기다가
+부모클래스로 객체를 생성하려하면 안됨. 
+왜냐면 부모클래스는 지금 추상클래스이고 추상클래스는 부모로써 역할은 할 수 있지만
+스스로 객체를 생성할때는 쓸 수 없음.

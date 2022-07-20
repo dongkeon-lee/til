@@ -1,0 +1,40 @@
+public class 클래스명 extends 부모클래스명
+
+부모가 가지고있는것을 자식이 그대로 물려받는것
+
+<Car.java>
+public class Car {
+    public void run () {
+        System.out.println("달리다");
+    }
+}
+
+
+
+
+
+
+
+<Bus.java>
+public class Bus extends Car {
+}
+
+
+
+
+
+
+
+
+
+<BusExam.java>
+public class BusExam {
+    public static void main (String[] args) {
+        Bus bus = new Bus();
+        bus.run();
+    }
+}
+
+BusExam.java에서 Bus 클래스로 bus 라는 인스턴스 생성하고 런을 호출해보면 
+분명히 Bus클래스에는 아무것도 없는데 run이 호출된다.
+이것은 Bus가 Car 클래스를 상속받아서 그대로 이용할 수 있기 때문이다.

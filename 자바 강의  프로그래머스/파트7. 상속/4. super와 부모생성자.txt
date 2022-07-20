@@ -1,0 +1,101 @@
+생성자가 만들어져있고
+생성자를 이용해서 새 객체를 만들때 생성자가 자동으로 실행된다.
+
+<Car.java>
+public class Car {
+    public Car () {
+        System.out.println("Car의 기본 생성자 입니다. ");
+    }
+}
+
+<Truck>
+public class Truck extends Car{
+    public Truck() {
+        System.out.println("트럭의 기본 생성자 입니다. ");
+    }
+}
+
+
+<TruckExam.java>
+public class TruckExam {
+    public static void main(String[] args) {
+        Truck t = new Truck();
+    }
+}
+
+TruckExam.java 에서 Truck 클래스로 객체를 만들기만 했는데
+부모클래스인 Car에서 만든 생성자랑 상속받은 자식클래스 Truck 에서 만든 생성자가 모두 실행되었다
+두개가 실행되었다는 말임. 그리고 순서는 부모클래스의 생성자 -> 상속클래스의 생성자
+이런식이었음.
+
+Car c = new Car();
+이거만 했으면 부모클래스의 생성자만 실행되었겠지
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+super
+부모객체를 나타내는 키워드
+부모생성자는 super()를 붙이면 부모의 생성자가 호출된다.
+
+<Truck.java>
+에서
+public class Truck extends Car{
+    public Truck() {
+        System.out.println("트럭의 기본 생성자 입니다. ");
+    }
+}
+이렇게만 썼지만 사실 컴파일러가 자동으로 이렇게 추가를 했을것이다.
+super();
+
+그래서
+public class Truck extends Car{
+    public Truck() {
+        super();
+        System.out.println("트럭의 기본 생성자 입니다. ");
+    }
+}
+사실은 이렇게인거지
+
+
+
+
+
+
+나를 가리키는 키워드가 this 였다면
+부모의 생성자를 가리키는 키워드는 super구나 를 기억하자.
+근데 컴파일러가 알아서 써주는데 내가 굳이 super 알아야함?
+
+
+
+
+
+
+
+
+
+super는 부모클래스의 '기본 생성자' 만 호출한다. 그러니까 public Car() {} 이렇게 () 안에 아무것도 없는것.
+그런데 만약  
+public Car (String name)
+이런식으로 name 문자열값을 받아 호출하게해버리면 더이상 기본 생성자가 아니게된다. 이렇게 되면 문제가뭐냐,
+<Truck.java>는 <Car.java>의 Car 클래스를 상속받아 사용하기 때문에 자신이 작동되려면
+우선 부모의 것이 먼저작동되고 순차적으로 자기것이 되어야하는데 원래라면 컴파일러가 알아서
+super(); 라는 명령으로 부모클래스의 기본생성자를 자동으로 호출해서 자식도 뒤이어 적힌대로 호출이 되는건데
+이제 더이상 부모클래스는 기본생성자가 아니라서 컴파일러가 super();를 자동으로 실행하지 않는다.
+그러면 Truck 클래스는 부모가 실행되지 않기 때문에 자기도 실행되지 못하게 된다.
+이럴때는 내가 직접 부모클래스의 생성자를 호출해줘야한다.
+그래서 내가 super를 알고있어야 하는거다.
+부모의 Car 생성자는 변수name에 문자열을 받아야 호출되므로,
+super("소방차");
+이런식으로 직접 적어줘야한다.

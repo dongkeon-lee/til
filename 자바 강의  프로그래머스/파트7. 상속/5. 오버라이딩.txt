@@ -1,0 +1,51 @@
+오버라이딩(overriding)
+부모가 가진 메서드와 똑같은 모양의 메서드를 자식이 가지고있는것
+메서드를 재정의 하는것.
+
+부모가 물려준 기능이 내가 필요하기는 하지만 그 기능을 그대로 사용하는게 별로 좋지않을때
+자식이 그 클래스를 재정의하여 사용하는것을 의미한다.
+
+
+<Car.java>
+public class Car {
+    public void run() {
+        System.out.println("Car의 run 메서드");
+    }
+}
+
+
+
+<Bus.java>
+public class Bus extends Car {
+    public void run() {
+        System.out.println("Bus의 run 메서드");
+    }
+}
+
+
+
+<BusExam.java>
+public class BusExam {
+    public static void main(String[] args) {
+        Bus bus = new Bus();
+        bus.run();
+    }
+}
+>"Bus의 run 메서드"
+부모랑 자식이 같은 메서드 명을 가지고있고 그걸 불러봤더니 자식의 것이 출력된다.
+부모가 먼저 나왔지만 같은 이름인 자식것이 그것을 덮어씌워버린거다.
+그렇다고 부모의 메서드가 사라지는게 아니다.
+
+
+이럴땐 내가 직접 부모의 메서드를 super를 통해 불러와주면된다.
+<Bus.java>
+public void run() {
+        super.run();
+        System.out.println("Bus 의 run 메서드");
+    }
+
+이렇게 하고 실행하면
+>
+Car의 run 메서드 <--부모
+Bus 의 run 메서드 <---자식
+잘 나온다.
