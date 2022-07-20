@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 public class Bus extends PublicTransport {
     int busFee; //버스 요금
     int driveState; //버스 운행 상태여부 (0:차고지행 1:운행)
@@ -13,6 +14,7 @@ public class Bus extends PublicTransport {
     public void currentPassenger() { // 버스의 현재 탑승객 수를 확인하는 메소드
         if (justRidePassenger > 30) { // 탑승제한 30명을 초과함
             System.out.println("현재 " + busName + "의 탑승 승객 수는 " + justRidePassenger + "명 으로 " + (justRidePassenger-30) + "명 만큼 초과 했습니다.");
+            JOptionPane.showMessageDialog(null, "탑승 제한 30명을 초과했습니다.");
         }
         else { // 탑승여유있음
             System.out.println("현재 " + busName + "의 탑승 승객 수는 " + justRidePassenger + "명 입니다.");
