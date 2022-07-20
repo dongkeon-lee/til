@@ -9,25 +9,6 @@ public class Bus extends PublicTransport {
         super(number);
     }
 
-//    public void busPassenger(int justRidePassenger) { //버스 탑승 승객 수
-//        this.justRidePassenger += justRidePassenger;
-//
-//    }
-
-//    public void busName(String busName) { //버스 이름
-//        this.busName = busName;
-//    } // 굳이 이름이 필요한가 스트링으로 버스 적고 넘버만 변수로 불러오면 되잖아.
-
-//    public void busNameAndNumber (String busName,int number) {
-//        this.busName = busName;
-//        this.number = number;
-//    } // 굳이 두개 합쳐둔게 필요할까?
-
-//    public void busDriveState(int driveState) { //버스 상태
-//        this.driveState = driveState;
-//        System.out.println(busName + "의 현재 상태는 " + driveState + "입니다.");
-//    }
-
 
     public void currentPassenger() { // 버스의 현재 탑승객 수를 확인하는 메소드
         if (justRidePassenger > 30) { // 탑승제한 30명을 초과함
