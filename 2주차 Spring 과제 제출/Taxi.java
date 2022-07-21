@@ -1,4 +1,3 @@
-import javax.swing.JOptionPane;
 public class Taxi extends PublicTransport{
     String destination; //목적지
     int destiDistance; //목적지까지 거리
@@ -19,7 +18,6 @@ public class Taxi extends PublicTransport{
     public void taxiFuelCheck() {
         if (fuel < 0) { //연료 없음
             System.out.println(taxiName + "의 남은 연료량은 " + fuel + " 입니다. 주유가 필요합니다.");
-            JOptionPane.showMessageDialog(null, "남은 연료가 별로 없습니다. 주유가 필요합니다.");
         }
         else { //연료 충분
             System.out.println(taxiName + "의 남은 연료량은 " + fuel + " 입니다.");
@@ -32,7 +30,6 @@ public class Taxi extends PublicTransport{
     public void taxiCurrentPassengerCheck() { //탑승 승객 수 확인
         if (taxiPassenger > maxPassenger) {// 현재 탑승객이 수용량을 초과함
             System.out.println("현재 탑승 승객 수는 " + taxiPassenger + "명 으로 " + (taxiPassenger - maxPassenger) + "명 초과입니다.");
-            JOptionPane.showMessageDialog(null, "최대 탑승 승객 수를 초과 했습니다.");
         }
         else { //자리 여유 있음
             System.out.println("현재 " + taxiName + "의 탑승 승객 수는 " + taxiPassenger + "명 입니다.");

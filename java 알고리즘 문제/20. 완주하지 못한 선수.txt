@@ -1,0 +1,114 @@
+완주하지 못한 선수
+문제 설명
+수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.
+
+마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
+
+제한사항
+마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.
+completion의 길이는 participant의 길이보다 1 작습니다.
+참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
+참가자 중에는 동명이인이 있을 수 있습니다.
+입출력 예
+participant	completion	return
+["leo", "kiki", "eden"]	["eden", "kiki"]	"leo"
+["marina", "josipa", "nikola", "vinko", "filipa"]	["josipa", "filipa", "marina", "nikola"]	"vinko"
+["mislav", "stanko", "mislav", "ana"]	["stanko", "ana", "mislav"]	"mislav"
+입출력 예 설명
+예제 #1
+"leo"는 참여자 명단에는 있지만, 완주자 명단에는 없기 때문에 완주하지 못했습니다.
+
+예제 #2
+"vinko"는 참여자 명단에는 있지만, 완주자 명단에는 없기 때문에 완주하지 못했습니다.
+
+예제 #3
+"mislav"는 참여자 명단에는 두 명이 있지만, 완주자 명단에는 한 명밖에 없기 때문에 한명은 완주하지 못했습니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+답
+import java.util.*;
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        System.out.println(participant[1]);
+        System.out.println(completion[1]);
+
+        for (int i = 0; i < participant.length; i++) {
+            if ( i == completion.length) {
+                answer += participant[i];
+                break;
+            }
+            if (!participant[i].equals(completion[i])) {
+                    answer += participant[i];
+                    break;
+                }
+
+
+        }
+        return answer;
+    }
+}
+
+
+아나 어이가 ㅇ벗네
+!participant[i].equals(completion[i])
+이거를 
+participant[i] != completion[i]
+이렇게 썼는데
+오류나는데 결과값이 
+
+테스트 1
+입력값 〉	["leo", "kiki", "eden"], ["eden", "kiki"]
+기댓값 〉	"leo"
+실행 결과 〉	실행한 결괏값 "eden"이 기댓값 "leo"과 다릅니다.
+출력 〉	kiki
+kiki
+테스트 2
+입력값 〉	["marina", "josipa", "nikola", "vinko", "filipa"], ["josipa", "filipa", "marina", "nikola"]
+기댓값 〉	"vinko"
+실행 결과 〉	실행한 결괏값 "filipa"이 기댓값 "vinko"과 다릅니다.
+출력 〉	josipa
+josipa
+테스트 3
+입력값 〉	["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"]
+기댓값 〉	"mislav"
+실행 결과 〉	실행한 결괏값 "ana"이 기댓값 "mislav"과 다릅니다.
+출력 〉	mislav
+mislav
+
+
+테스트1 결과가값이 에덴이 왜나옴? 아니 뭐 주소번지를 지칭하는거라 == 쓰면 오류가 나는거면 이해를 하겠는데
+오류떠서 실행 안되는거도 아니고 실행 잘되는데 왜 에덴이 결과값? 에덴이 나올 수가 없는데
+내가 어레이 된상태에서 두 변수 모두 0부터 끝까지 대입해서 하나하나 프린트해봤는데 순서 잘 맞거든
+에덴이 나올 수가 없어
+다른 테스트도 마찬가지야. 그러니까 안될꺼면 애초에 에러나서 실행이 안됬어야지, 다른값을 지칭하는건 말이안돼
+이거 인텔리j에서 돌리면 결과값 leo 잘나옴.
+그리고 !participant[i].equals(completion[i]) 이건 결과값이 leo고
+participant[i] != completion[i] 이건 결과값이 eden? 어째서? 똑같이 i 번째에 있는거 지칭하는데 왜 바껴??????????????????????????????????????????????

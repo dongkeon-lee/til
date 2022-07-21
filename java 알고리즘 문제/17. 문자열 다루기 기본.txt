@@ -1,0 +1,63 @@
+난이도 3
+
+문자열 다루기 기본
+문제 설명
+문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수, solution을 완성하세요. 예를 들어 s가 "a234"이면 False를 리턴하고 "1234"라면 True를 리턴하면 됩니다.
+
+제한 사항
+s는 길이 1 이상, 길이 8 이하인 문자열입니다.
+입출력 예
+s	return
+"a234"	false
+"1234"	true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+답
+
+class Solution {
+    public boolean solution(String s) {
+        boolean answer = true;
+        int temp = 0;
+        if (s.length() == 4 || s.length() == 6) {
+            for (int i = 0; i < s.length(); i++) {
+                temp = Character.getNumericValue(s.charAt(i));
+
+                if (temp >= 0 && temp <= 9) {
+                }
+                else {
+                    answer = false;
+                }
+            }
+        }
+        else {
+            answer = false;
+
+        }
+        return answer;
+    }
+}
+
+
+
+문자를 int로 바꿔야 크기비교 가능
+주의점: 문자열을 문자로 바꾸는건 charAt 으로 되는데 문자배열에 있는걸 문자로 바꾸는건 안된다.
+temp[i].charAt(i); 이런거 안됨. temp 가 문자 배열 String[] 타입인데 문자배열은 하나하나 빼서 문자로 바로 못바꾼다.
