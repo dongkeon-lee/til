@@ -1,0 +1,237 @@
+CRUD :  정보관리의 기본 기능
+생성(Create)
+조회(Read)
+변경(Update)
+삭제(Delete)
+
+
+
+week02Application.java로가서
+return (args) -> { 밑에 다 지우고
+
+'''''
+
+// 데이터 저장하기
+repository.save(new Course("프론트엔드의 꽃, 리액트", "임민영"));
+
+// 데이터 전부 조회하기
+List<Course> courseList = repository.findAll();
+for (int i=0; i<courseList.size(); i++) {
+    Course course = courseList.get(i);
+    System.out.println(course.getId());
+    System.out.println(course.getTitle());
+    System.out.println(course.getTutor());
+}
+
+// 데이터 하나 조회하기
+Course course = repository.findById(1L).orElseThrow( //int 가 아니라 long 이라서 () 안에 1만쓰면 안되고 L도 추가로 붙여줘야함. 여기까지만 치면 빨간줄나옴. 해당 아이디에 뭐 없으면 어떻게 해야할지를 안정해줘서그래. orElseThrow 해서 없을때를 설정해주자.
+        () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다.")
+);
+
+'''''
+붙여넣기
+
+이러면 getId() 가 빨간줄이 그어질텐데
+Course.java 가서 getId 도 만들어주자
+
+public Long getId() {
+	return this.id;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+업데이트, 딜리트를 하려면 서비스에 대해 알아야함.
+👉 update, delete 로 넘어가기 전에, 다루어야 하는 개념이 바로 Service 입니다.
+
+
+
+- 스프링의 구조는 3가지 영역으로 나눌 수 있습니다.
+    1. Controller : 가장 바깥 부분, 요청/응답을 처리함.
+        
+        → 2주차 후반부에 배울 녀석
+        
+    2. Service : 중간 부분, 실제 중요한 작동이 많이 일어나는 부분
+        
+        → 지금 배울 녀석
+        
+    3. Repo : 가장 안쪽 부분, DB와 맞닿아 있음.
+        
+        → 여태 배운 녀석 (Repository, Entity)
+        
+- Update 는 Service 부분에 작성합니다.
+
+
+
+
+
+1. 먼저 Course.java 에다가
+
+''''''
+
+public void update(Course course) {
+    this.title = course.title;
+    this.tutor = course.tutor;
+}
+
+''''''
+업데이트 메소드 넣어야함.
+
+
+2. src > main > java > com.sparta.week02 > service 패키지 생성하기
+
+3. 패키지에 CourseService.java 만들기
+
+4. 
+
+'''''
+
+@Service // 스프링에게 이 클래스는 서비스임을 명시
+public class CourseService {
+
+		// final: 서비스에게 꼭 필요한 녀석임을 명시
+    private final CourseRepository courseRepository;
+
+		// 생성자를 통해, Service 클래스를 만들 때 꼭 Repository를 넣어주도록
+		// 스프링에게 알려줌
+    public CourseService(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
+
+    @Transactional // SQL 쿼리가 일어나야 함을 스프링에게 알려줌
+    public Long update(Long id, Course course) {
+        Course course1 = courseRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다.")
+        );
+        course1.update(course);
+        return course1.getId();
+    }
+}
+
+'''''
+붙여넣기
+
+courseRepository 는 누가 만들어주냐? CouseService 생성할때 스프링이 알아서 만들어줌
+
+그 밑에 Transactional 쪽을 보면
+Long은 업데이트 되었을때 어떤  id 가 되었는지를 돌려주는 거임. 전달받는거는 두개의 재료가 필요함. Id 랑 업데이트할 녀석의 정보를 가져올 녀석.
+그다음에 업데이트할 녀석을 찾아서 course1을 생성하여 넣어줌
+course1이 업데이트 되도록 메소를 설정. course1.update(course); 이때 괄호안의 course 는 이 메소드에 필요한 재료중에
+course가 있는데 그거임.
+그리고 업데이트 해준 녀석의 아이디를 리턴하는 
+return course1.getId();
+
+
+
+
+
+
+
+
+
+week02Application.java 에다가
+
+'''''
+
+@Bean
+public CommandLineRunner demo(CourseRepository courseRepository, CourseService courseService) {
+    return (args) -> {
+        courseRepository.save(new Course("프론트엔드의 꽃, 리액트", "임민영"));
+
+        System.out.println("데이터 인쇄");
+        List<Course> courseList = courseRepository.findAll();
+        for (int i=0; i<courseList.size(); i++) {
+            Course course = courseList.get(i);
+            System.out.println(course.getId());
+            System.out.println(course.getTitle());
+            System.out.println(course.getTutor());
+        } //여기까지 우선 생성해 놓고 불러와서 읽어보는 과정임.
+
+        Course new_course = new Course("웹개발의 봄, Spring", "임민영"); //강의제목만 바뀐 업데이트
+        courseService.update(1L, new_course); //아이디가 1인 녀석을 가지고 변경할 코스를 넘겨준다
+        courseList = courseRepository.findAll();
+        for (int i=0; i<courseList.size(); i++) {
+            Course course = courseList.get(i);
+            System.out.println(course.getId());
+            System.out.println(course.getTitle());
+            System.out.println(course.getTutor());
+        }
+    };
+}
+
+'''''
+붙여넣기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+딜리트는 어케함?
+
+@Bean
+public CommandLineRunner demo(CourseRepository courseRepository, CourseService courseService) {
+    return (args) -> {
+        courseRepository.save(new Course("프론트엔드의 꽃, 리액트", "임민영"));
+
+        System.out.println("데이터 인쇄");
+        List<Course> courseList = courseRepository.findAll();
+        for (int i=0; i<courseList.size(); i++) {
+            Course course = courseList.get(i);
+            System.out.println(course.getId());
+            System.out.println(course.getTitle());
+            System.out.println(course.getTutor());
+        }
+
+        Course new_course = new Course("웹개발의 봄, Spring", "임민영");
+        courseService.update(1L, new_course);
+        courseList = courseRepository.findAll();
+        for (int i=0; i<courseList.size(); i++) {
+            Course course = courseList.get(i);
+            System.out.println(course.getId());
+            System.out.println(course.getTitle());
+            System.out.println(course.getTutor());
+        }
+
+        courseRepository.deleteAll();      <---------------------------------------이거 한줄 추가하면 싹 사라짐
+    };
+}

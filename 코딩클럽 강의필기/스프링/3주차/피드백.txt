@@ -1,0 +1,21 @@
+24시간동안의 글만 보여주기
+
+MemoController.java
+
+@GetMapping("/api/memos")
+    public List<Memo> getMemos() {
+        LocalDateTime start = LocalDateTime.now().minusDays(1);
+        LocalDateTime end = LocalDateTime.now();
+        return memoRepository.findAllByModifiedAtBetweenOrderByModifiedAtDesc(start, end);
+    }
+
+
+
+MemoRepository.java
+
+public interface MemoRepository extends JpaRepository<Memo, Long> {
+    List<Memo> findAllByModifiedAtBetweenOrderByModifiedAtDesc(LocalDateTime start, LocalDateTime end);
+}
+
+
+

@@ -1,0 +1,30 @@
+API를 만들어보자
+
+1.src > main > java > com.sparta.week02 아래에 controller 패키지를 생성
+
+2. 패키지에 CourseControlle.java 파일 생성
+
+3. 
+
+''''
+
+@RequiredArgsConstructor
+@RestController
+public class CourseController {
+
+    private final CourseRepository courseRepository;
+
+    @GetMapping("/api/courses")
+    public List<Course> getCourses() {
+        return courseRepository.findAll();
+    }
+}
+
+''''
+붙여넣기
+
+get 방식으로 courseRepository에서 전부 찾아서 List 형태의 Course 에 반환해줘라.
+그러면 courseRepository 가 필요할테니 
+private final CourseRepository courseRepository; 이것을 위에 선언해준것.
+그리고 final 썼으니가 @RequiredArgsConstructor 이것도 필요.
+json으로 응답해야하므로 @RestController 필요

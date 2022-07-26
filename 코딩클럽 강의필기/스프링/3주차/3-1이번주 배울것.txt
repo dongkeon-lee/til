@@ -1,0 +1,7 @@
+서버완성하기 - Memo API
+CRUD 기능을 가진 메모 API를 생성해보자
+키워드 :
+RestController - json 형태로 자동응답하기 위해서
+Service - 수정(update)할때 필요
+Repository - 생성,삭제,조회할때 필요
+RequestDto - 뭔가 변경을 원하거나 데이터를 들고다니면서 필요할때 필요한 원본의 복제품

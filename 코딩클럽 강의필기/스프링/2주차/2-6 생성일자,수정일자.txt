@@ -1,0 +1,42 @@
+이 데이터가 언제 생성되었고 또 언제 변경되었는지를 표시해보자.
+내가 매번 클래스를 생성할때마다 매번 멤버변수로 생성일자 변경일자를 새로 만들지 않고 
+상속으로 분배하면 좋잖아.
+
+domain 패키지안에 Timestamped.java 라는 파일을 만들어보자
+
+''''''
+
+@MappedSuperclass // 상속했을 때, 컬럼으로 인식하게 합니다.
+@EntityListeners(AuditingEntityListener.class) // 생성/수정 시간을 자동으로 반영하도록 설정
+public abstract class Timestamped { //abstract 앱스트랙트? 추상이라고해서 이 클래스는 무조건 상속으로만 쓸 수 있다는 뜻. 생성으로 이 클래스를 사용하거나 할 수는 없다.
+
+    @CreatedDate // 생성일자임을 나타냅니다. 스프링한테 야 얘는 이런역할이 잇어 라고 알려주는 지표임 = 어노테이션
+    private LocalDateTime createdAt; // localdatetime은 시간을 나타내주는 함수임
+
+    @LastModifiedDate // 마지막 수정일자임을 나타냅니다.
+    private LocalDateTime modifiedAt;
+}
+
+''''''
+
+
+
+이제 Course.java로 가서 상속을 진행하자.
+public class Course{ 를
+public class Course extends Timestamped { 로 변경
+
+
+
+
+
+
+
+week02Application.java 로가서
+
+@EnableJpaAuditing //날짜에 따라서 자동으로 업데이트 될거임
+
+이걸 추가해줘야함. 그래야 스프링을 통해서 업뎃된게 반영이 잘됨
+
+
+
+

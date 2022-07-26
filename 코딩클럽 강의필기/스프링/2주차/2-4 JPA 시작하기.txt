@@ -1,0 +1,81 @@
+JPA란?
+SQL을 쓰지않고 데이터를 생성,조회,수정,삭제할 수 있도록 해주는 번역기임.
+java <-----jpa가 중간에서 번역------> SQL
+
+Spring                 MySQL
+
+Domain      =         Table
+Repository  =         SQL
+
+
+자바에 도메인과 레포지토리 도입하기
+1. src > main > java > com.sparta.week02 에 models 라는 패키지 생성하기
+2. Course.java , CourseRepository.java 파일 생성하기. 이때 레포지토리는 클래스가 아니라 interface를 선택하고 만들어야함.
+3. Course.java 에다가
+
+
+
+'''''
+
+@NoArgsConstructor // 기본생성자를 대신 생성해줍니다.
+@Entity // 테이블임을 나타냅니다.
+public class Course {
+
+    @Id // ID 값, Primary Key로 사용하겠다는 뜻입니다.
+    @GeneratedValue(strategy = GenerationType.AUTO) // 자동 증가 명령입니다.
+    private Long id;
+
+    @Column(nullable = false) // 컬럼 값이고 반드시 값이 존재해야 함을 나타냅니다.
+    private String title;
+
+    @Column(nullable = false)
+    private String tutor;
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getTutor() {
+        return this.tutor;
+    }
+
+    public Course(String title, String tutor) {
+        this.title = title;
+        this.tutor = tutor;
+    }
+}
+
+'''''
+
+붙여넣기
+
+
+
+4. CourseRepository.java 에다가 
+
+
+'''''
+
+public interface CourseRepository extends JpaRepository<Course, Long> {
+}
+
+'''''
+
+붙여넣기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+interface가 뭐임?
+JPA는 Repository 를 통해서만 사용할 수 있다.
+인터페이스는 클래스에서 멤버변수가 빠진 메소드 모음집 이라고 보면 된다.

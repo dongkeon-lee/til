@@ -1,0 +1,13 @@
+RDBMS?
+Relational DataBase Management System 컴퓨터에 정보를 저장하고 관리하는 기술. 관계형 정보관리 시스템.
+고도화된 엑셀 정도로 생각하자
+
+src > main > resources > application.properties 파일 열어서
+
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:testdb
+
+이걸 붙여넣자.  이건 MySQL의 웹콘솔을 띄우는 코드임.
+localhost:8080/h2-console 로 가면 보게됨
+실제로는 jpa 를 이용하기 때문에 앞으로 이런건 볼 일이 없을거임. jpa가 얼마나 편한건지를
+알기위해서 직접 h2의 데이터베이스를 조작하는걸 보기위함에 가까움,
