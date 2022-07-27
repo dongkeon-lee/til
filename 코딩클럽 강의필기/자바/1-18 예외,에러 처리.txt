@@ -1,0 +1,62 @@
+try {
+    // 예외가 발생할 가능성이 있는 코드를 구현합니다.
+} catch (FileNotFoundException e) {
+    // FileNotFoundException이 발생했을 경우,이를 처리하기 위한 코드를 구현합니다.
+} catch (IOException e) {
+    // FileNotFoundException이 아닌 IOException이 발생했을 경우,이를 처리하기 위한 코드를 구현합니다.
+} finally {
+    // 예외의 발생여부에 관계없이 항상 수행되어야하는 코드를 구현합니다.
+}
+
+try 밑에는 코드를 짜고
+catch 에는 내가 알법한,예상한 예외상황에 대해서 어떻게 할것인지를 짠다.
+
+
+
+
+
+public class Hello {
+    public static void main(String[] args) {
+        int number = 10;
+        int result;
+
+        for (int i = 10; i >= 0; i--) {
+            try{
+                result = number / i;
+                System.out.println(result);
+            } catch (Exception e) {
+                System.out.println("Exception 발생: "+e.getMessage());
+            } finally {
+                System.out.println("항상 실행되는 finally 구문");
+            }
+        }
+
+    }
+}
+
+
+
+
+>>
+1
+항상 실행되는 finally 구문
+1
+항상 실행되는 finally 구문
+1
+항상 실행되는 finally 구문
+1
+항상 실행되는 finally 구문
+1
+항상 실행되는 finally 구문
+2
+항상 실행되는 finally 구문
+2
+항상 실행되는 finally 구문
+3
+항상 실행되는 finally 구문
+5
+항상 실행되는 finally 구문
+10
+항상 실행되는 finally 구문
+Exception 발생: / by zero
+항상 실행되는 finally 구문

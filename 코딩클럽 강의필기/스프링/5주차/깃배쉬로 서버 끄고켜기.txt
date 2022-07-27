@@ -1,0 +1,21 @@
+서버켜기:
+1.서버를 킨다
+ssh -i /c/Users/Dongkeon/Desktop/doker_mykey.pem ubuntu@3.35.16.174
+
+2.nohup java -jar SpringPostWork01-0.0.1-SNAPSHOT.jar &
+서버를 닫아도 알아서 뒤에서 자동으로 돌아가게 하는 명령어. 앞에 nohup이랑 맨뒤에& 빼면
+서버 내가 킨동안에만 열리게 하는거임.
+
+3.엔더한번더
+
+
+
+
+
+서버끄기:
+exit 하면 꺼짐. 근데 만약 내가 서버 꺼도 알아서 뒤에서 돌아가게 해놨다면
+1.우선 서버를 킨다.
+2. ps -ef | grep java 를 입력한다
+3. ubuntu      7946       1  9 13:43 ?        00:00:13 java -jar SpringPostWork01-0.0.1-SNAPSHOT.jar
+뭐 이런식으로 뜰텐데 7946 이 다른 숫자일꺼야. 이 숫자 기억.
+4. kill -9 7946 하면 끝
