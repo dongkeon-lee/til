@@ -25,9 +25,11 @@ public class Post extends TimeStamped{
     @Column(nullable = false)
     private String title;
 
+
     @Column(nullable = false)
     @Getter(onMethod = @__( @JsonIgnore))
     private String password;
+
 
     public Post(String username, String contents, String title, String password) {
         this.username = username;

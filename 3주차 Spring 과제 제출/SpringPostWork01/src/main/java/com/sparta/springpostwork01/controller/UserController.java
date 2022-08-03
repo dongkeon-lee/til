@@ -18,7 +18,7 @@ public class UserController {
     }
 
     // 회원 로그인 페이지
-    @GetMapping("/user/login")
+    @GetMapping("/user/loginView")
     public String login() {
         return "login";
     }
@@ -33,6 +33,6 @@ public class UserController {
     @PostMapping("/user/signup")
     public String registerUser(SignupRequestDto requestDto) {
         userService.registerUser(requestDto);
-        return "redirect:/user/login";
+        return "redirect:/user/loginView";
     }
 }
