@@ -1,5 +1,6 @@
 package com.sparta.springpostwork01.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ public class Post extends TimeStamped{
     private String title;
 
     @Column(nullable = false)
+    @Getter(onMethod = @__( @JsonIgnore))
     private String password;
 
     public Post(String username, String contents, String title, String password) {
